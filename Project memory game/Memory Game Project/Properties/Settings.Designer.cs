@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_memory_game.Properties
+namespace Memory_Game_Project.Properties
 {
 
 

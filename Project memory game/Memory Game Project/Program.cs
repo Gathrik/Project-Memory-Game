@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using prototype;
 
-namespace Project_memory_game
+namespace Memory_Game_Project
 {
     static class Program
     {
@@ -16,7 +20,10 @@ namespace Project_memory_game
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // todo (Jan) moet eigenlijk wat eleganter met iets van een Resources object
+            Application.Run(new Hoofdmenu());
         }
     }
 }
+       
