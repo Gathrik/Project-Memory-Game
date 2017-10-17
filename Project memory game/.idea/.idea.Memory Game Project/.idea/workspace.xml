@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs" line="78" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0bc1f5c4-4241-4747-8dc1-aa59311e7a70" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Memory Game Project" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Hoofdmenu.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <marker date="1508146843944" expanded="false" signature="6:240" ph="..." />
+                <marker date="1508146843944" expanded="true" signature="261:1200" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="305:1198" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="463:610" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="686:707" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="773:981" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="1048:1069" ph="{...}" />
+                <marker date="1508146843944" expanded="true" signature="1140:1192" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Program.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Memory Game Project/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="835">
+              <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+              <folding>
+                <marker date="1508105721006" expanded="false" signature="6:210" ph="..." />
+                <marker date="1508105721006" expanded="true" signature="241:2802" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="268:2800" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="283:373" ph="/// The main entry point for the application. ... " />
+                <marker date="1508105721006" expanded="true" signature="420:804" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="936:2156" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="959:1160" ph="/* get eerst de map voor het project en dan voor de plaatjes ... */" />
+                <marker date="1508105721006" expanded="true" signature="1646:1821" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="1718:1807" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="2020:2117" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="2275:2794" ph="{...}" />
+                <marker date="1508105721006" expanded="true" signature="2612:2753" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spel_bord.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+              <folding>
+                <marker date="1508148791314" expanded="false" signature="6:315" ph="..." />
+                <marker date="1508148791314" expanded="true" signature="346:3746" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="390:3744" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="712:1004" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1042:1224" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1110:1214" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1269:1397" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1295:1387" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1462:1604" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1518:1594" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="1643:2010" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2052:2327" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2209:2317" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2392:2631" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2707:2800" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2873:2925" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="2991:3331" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="3099:3209" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="3226:3321" ph="{...}" />
+                <marker date="1508148791314" expanded="true" signature="3381:3738" ph="/* private void ResetImages() // Restart het gameboard ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>a</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Memory Game Project/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Memory Game Project/Form1.cs" />
+        <option value="$PROJECT_DIR$/Memory Game Project/hoofdmenu.cs" />
+        <option value="$PROJECT_DIR$/Memory Game Project/spel_bord.cs" />
+        <option value="$PROJECT_DIR$/Memory Game Project/Program.cs" />
+        <option value="$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs" />
+        <option value="$PROJECT_DIR$/Memory Game Project/Spel_bord.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1600" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Memory Game Project (1 project)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Memory Game Project" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Memory Game Project.sln" />
+    <property name="full.screen.before.presentation.mode" value="true" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Project.Default">
+    <configuration default="true" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue=".NET Project.Default" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0bc1f5c4-4241-4747-8dc1-aa59311e7a70" name="Default" comment="" />
+      <created>1508093783436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1508093783436</updated>
+      <workItem from="1508093789769" duration="43000" />
+      <workItem from="1508093894160" duration="7286000" />
+      <workItem from="1508101495946" duration="4224000" />
+      <workItem from="1508110680022" duration="609000" />
+      <workItem from="1508144924343" duration="3686000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15848000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1600" height="900" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17866324" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs</url>
+          <line>32</line>
+          <properties startOffset="901" endOffset="920" documentPath="$PROJECT_DIR$/Memory Game Project/Spel_bord.cs" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1508146843944" expanded="false" signature="6:240" ph="..." />
+            <marker date="1508146843944" expanded="true" signature="261:1200" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="305:1198" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="463:610" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="686:707" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="773:981" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1048:1069" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1140:1192" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+          <folding>
+            <marker date="1508105721006" expanded="false" signature="6:210" ph="..." />
+            <marker date="1508105721006" expanded="true" signature="241:2802" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="268:2800" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="283:373" ph="/// The main entry point for the application. ... " />
+            <marker date="1508105721006" expanded="true" signature="420:804" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="936:2156" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="959:1160" ph="/* get eerst de map voor het project en dan voor de plaatjes ... */" />
+            <marker date="1508105721006" expanded="true" signature="1646:1821" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="1718:1807" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2020:2117" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2275:2794" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2612:2753" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding>
+            <marker date="1508148791314" expanded="false" signature="6:315" ph="..." />
+            <marker date="1508148791314" expanded="true" signature="346:3746" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="390:3744" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="712:1004" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1042:1224" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1110:1214" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1269:1397" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1295:1387" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1462:1604" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1518:1594" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1643:2010" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2052:2327" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2209:2317" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2392:2631" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2707:2800" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2873:2925" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2991:3331" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3099:3209" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3226:3321" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3381:3738" ph="/* private void ResetImages() // Restart het gameboard ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="37" column="82" lean-forward="false" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
+          <folding>
+            <marker date="1508146843944" expanded="false" signature="6:240" ph="..." />
+            <marker date="1508146843944" expanded="true" signature="261:1200" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="305:1198" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="463:610" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="686:707" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="773:981" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1048:1069" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1140:1192" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+          <folding>
+            <marker date="1508105721006" expanded="false" signature="6:210" ph="..." />
+            <marker date="1508105721006" expanded="true" signature="241:2802" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="268:2800" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="283:373" ph="/// The main entry point for the application. ... " />
+            <marker date="1508105721006" expanded="true" signature="420:804" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="936:2156" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="959:1160" ph="/* get eerst de map voor het project en dan voor de plaatjes ... */" />
+            <marker date="1508105721006" expanded="true" signature="1646:1821" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="1718:1807" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2020:2117" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2275:2794" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2612:2753" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="53" column="65" lean-forward="false" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
+          <folding>
+            <marker date="1508148791314" expanded="false" signature="6:315" ph="..." />
+            <marker date="1508148791314" expanded="true" signature="346:3746" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="390:3744" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="712:1004" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1042:1224" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1110:1214" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1269:1397" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1295:1387" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1462:1604" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1518:1594" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1643:2010" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2052:2327" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2209:2317" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2392:2631" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2707:2800" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2873:2925" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2991:3331" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3099:3209" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3226:3321" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3381:3738" ph="/* private void ResetImages() // Restart het gameboard ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1508146843944" expanded="false" signature="6:240" ph="..." />
+            <marker date="1508146843944" expanded="true" signature="261:1200" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="305:1198" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="463:610" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="686:707" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="773:981" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1048:1069" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1140:1192" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
+            <marker date="1508105721006" expanded="false" signature="6:210" ph="..." />
+            <marker date="1508105721006" expanded="true" signature="241:2802" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="268:2800" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="283:373" ph="/// The main entry point for the application. ... " />
+            <marker date="1508105721006" expanded="true" signature="420:804" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="936:2156" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="959:1160" ph="/* get eerst de map voor het project en dan voor de plaatjes ... */" />
+            <marker date="1508105721006" expanded="true" signature="1646:1821" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="1718:1807" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2020:2117" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2275:2794" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2612:2753" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project.sln">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Form1.cs" />
+    <entry file="file://$PROJECT_DIR$/Memory Game Project.sln">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Hoofdmenu.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <marker date="1508146843944" expanded="false" signature="6:240" ph="..." />
+            <marker date="1508146843944" expanded="true" signature="261:1200" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="305:1198" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="463:610" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="686:707" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="773:981" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1048:1069" ph="{...}" />
+            <marker date="1508146843944" expanded="true" signature="1140:1192" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+          <folding>
+            <marker date="1508105721006" expanded="false" signature="6:210" ph="..." />
+            <marker date="1508105721006" expanded="true" signature="241:2802" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="268:2800" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="283:373" ph="/// The main entry point for the application. ... " />
+            <marker date="1508105721006" expanded="true" signature="420:804" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="936:2156" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="959:1160" ph="/* get eerst de map voor het project en dan voor de plaatjes ... */" />
+            <marker date="1508105721006" expanded="true" signature="1646:1821" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="1718:1807" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2020:2117" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2275:2794" ph="{...}" />
+            <marker date="1508105721006" expanded="true" signature="2612:2753" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Memory Game Project/Spel_bord.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding>
+            <marker date="1508148791314" expanded="false" signature="6:315" ph="..." />
+            <marker date="1508148791314" expanded="true" signature="346:3746" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="390:3744" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="712:1004" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1042:1224" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1110:1214" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1269:1397" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1295:1387" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1462:1604" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1518:1594" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="1643:2010" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2052:2327" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2209:2317" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2392:2631" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2707:2800" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2873:2925" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="2991:3331" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3099:3209" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3226:3321" ph="{...}" />
+            <marker date="1508148791314" expanded="true" signature="3381:3738" ph="/* private void ResetImages() // Restart het gameboard ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
