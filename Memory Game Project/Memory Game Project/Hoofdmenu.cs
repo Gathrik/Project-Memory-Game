@@ -13,12 +13,14 @@ namespace prototype
 {
     public partial class Hoofdmenu : Form
     {
+        string[] themas = new string[2] { "DC", "Marvel" };
+        public static int themaIndex = 0;
 
 
         public Hoofdmenu()
         {
             InitializeComponent();
-
+            huidige_thema_label.Text = themas[themaIndex];
         }
 
 
@@ -37,6 +39,19 @@ namespace prototype
         private void multiplayer_klik(object sender, EventArgs e)
         {
 
+        }
+
+        private void verander_thema_klik(object sender, EventArgs e)
+        {
+            if (themaIndex == 0)
+            {
+                themaIndex++;
+            }
+            else
+            {
+                themaIndex--;
+            }
+            huidige_thema_label.Text = themas[themaIndex];
         }
 
         private void sluit_programma_klik(object sender, EventArgs e)

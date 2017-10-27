@@ -133,5 +133,14 @@
   <ItemGroup>
     <None Include="Resources\muziek11.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dc_icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dc_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marvel_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

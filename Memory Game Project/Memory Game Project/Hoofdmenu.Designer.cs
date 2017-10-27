@@ -37,6 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.multiplayer_knop = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.huidige_thema_label = new System.Windows.Forms.Label();
+            this.verander_thema_knop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -135,11 +137,33 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Score vorig spel:";
             // 
+            // huidige_thema_label
+            // 
+            this.huidige_thema_label.AutoSize = true;
+            this.huidige_thema_label.Location = new System.Drawing.Point(99, 312);
+            this.huidige_thema_label.Name = "huidige_thema_label";
+            this.huidige_thema_label.Size = new System.Drawing.Size(36, 13);
+            this.huidige_thema_label.TabIndex = 13;
+            this.huidige_thema_label.Text = "thema";
+            this.huidige_thema_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // verander_thema_knop
+            // 
+            this.verander_thema_knop.Location = new System.Drawing.Point(68, 245);
+            this.verander_thema_knop.Name = "verander_thema_knop";
+            this.verander_thema_knop.Size = new System.Drawing.Size(101, 48);
+            this.verander_thema_knop.TabIndex = 12;
+            this.verander_thema_knop.Text = "Verander Thema";
+            this.verander_thema_knop.UseVisualStyleBackColor = true;
+            this.verander_thema_knop.Click += new System.EventHandler(this.verander_thema_klik);
+            // 
             // Hoofdmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 424);
+            this.Controls.Add(this.huidige_thema_label);
+            this.Controls.Add(this.verander_thema_knop);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.multiplayer_knop);
             this.Controls.Add(this.pictureBox2);
@@ -171,6 +195,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button multiplayer_knop;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label huidige_thema_label;
+        private System.Windows.Forms.Button verander_thema_knop;
     }
 }
 

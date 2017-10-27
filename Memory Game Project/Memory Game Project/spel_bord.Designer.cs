@@ -280,7 +280,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.button4.Location = new System.Drawing.Point(342, 445);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 48);
+            this.button4.Size = new System.Drawing.Size(92, 48);
             this.button4.TabIndex = 25;
             this.button4.Text = "[test] load game";
             this.button4.UseVisualStyleBackColor = true;

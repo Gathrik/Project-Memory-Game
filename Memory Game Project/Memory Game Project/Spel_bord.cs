@@ -13,6 +13,9 @@ using System.Windows.Forms;
 using Memory_Game_Project.Properties;
 using prototype;
 using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Windows.Forms.VisualStyles;
+
 // ReSharper disable All
 
 
@@ -21,6 +24,7 @@ namespace Memory_Game_Project
     public partial class Spel_bord : Form
     {
         bool allowClick = true;
+        string themaExtensie;
         PictureBox firstGuess;
         Random random = new Random();
         private Image[] plaatjes;
@@ -34,8 +38,9 @@ namespace Memory_Game_Project
         public Spel_bord(Hoofdmenu hoofdmenu_arg)
         {
             InitializeComponent();
+            checkThema();
             plaatjes = get_plaatjes();
-            plaatje_achterkant = get_achterkant();
+            //plaatje_achterkant = get_achterkant();
             hoofdmenu = hoofdmenu_arg;
             RandomizePictures();
             hideImages();
@@ -126,15 +131,16 @@ namespace Memory_Game_Project
         private Image[] get_plaatjes()
         {
             // get eerst de map voor het project en dan voor de plaatjes
+            // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
+            String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
             String map_met_plaatjes = "\\Resources\\";
 
             // maakt een list met de filepath van de plaatjes
             String[] bestanden_in_map = Directory.GetFiles(project_map + map_met_plaatjes);
-            string plaatjes_extenstie = ".png";
             List<string> plaatjes_filepaths = new List<string> { };
             foreach (String bestand in bestanden_in_map)
             {
-                if (bestand.Contains(plaatjes_extenstie))
+                if (bestand.Contains(themaExtensie))
                 {
                     plaatjes_filepaths.Add(bestand);
                 }
@@ -147,6 +153,31 @@ namespace Memory_Game_Project
                 plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
             }
             return plaatjes;
+        }
+
+        private void checkThema() // (Garik) Weet niet wat beter is, een if statement of gewoon switches
+        {
+            /* if (Hoofdmenu.themaIndex == 0)
+             {
+                 themaExtensie = "_dc.png";
+             } else
+             {
+                 themaExtensie = "_marvel.png";
+             } */
+
+            int themaSwitch = Hoofdmenu.themaIndex;
+
+            switch (themaSwitch)
+            {
+                case 0:
+                    plaatje_achterkant = Resources.dc_icon;
+                    themaExtensie = "_dc.png";
+                    break;
+                case 1:
+                    plaatje_achterkant = Resources.marvel_icon;
+                    themaExtensie = "_marvel.png";
+                    break;
+            }
         }
 
         private Image get_achterkant()
@@ -188,10 +219,12 @@ namespace Memory_Game_Project
         private class Spel_Opslag
         {
             static private string saves_map = "\\saves\\";
-            static private string autosave_bestand = "autosave.sav";
+            static private string temp_bestand = "temp"
+            static private string autosave_bestand = "autosave.zip";
             static private string text_bestand_name = "savetext.txt";
             static private string plaatjes_extenstie = ".png";
             static private ImageFormat plaatjes_format = ImageFormat.Png;
+            static private bool encyptie = false;
 
             public static void save_spel(PictureBox[] kaartjes, Image achterkant, string speler_1_naam_score,
                     string speler_2_naam_score, string filepath,  string project_map)
@@ -220,7 +253,7 @@ namespace Memory_Game_Project
                  */
 
                 string save_bestand = resolve_path(filepath, project_map);
-                int imgs_index = 1;
+                int imgs_index = 1;//(Jan) de array index waar de plaatjes worden opgeslagen
                 int omgedraait_index = 0;
                 int no_kaartjes = kaartjes.Length;
 
@@ -265,8 +298,17 @@ namespace Memory_Game_Project
             {
                 zip_filepath = resolve_path(zip_filepath, project_map);
 
-                String[] save_tekst = get_save_tekst(zip_filepath);
-
+                String[] save_tekst;
+                try
+                {
+                    save_tekst = get_save_tekst(zip_filepath);
+                }
+                catch
+                {
+                    Encryption.decrypt_save(zip_filepath);
+                    save_tekst = get_save_tekst(zip_filepath);
+                    Console.WriteLine("kan bestand niet lezen. is het encrypted?");
+                }
                 //parses tekst
                 Object[] temp = parse_save_tekst(save_tekst);
                 int aantal_plaatjes = (int)temp[0];
@@ -324,7 +366,7 @@ namespace Memory_Game_Project
                         for (int i = 0; i < kaart_data.GetLength(0); i++)
                         {
                             Image img = kaart_data[i, imgs_index] as Image;
-                            Byte[] bytes = img_to_bytes(img);
+                            Byte[] bytes = img_naar_bytes(img);
 
                             var bestand = zip.CreateEntry(i + plaatjes_extenstie);
                             using (var entryStream = bestand.Open())
@@ -333,7 +375,7 @@ namespace Memory_Game_Project
                             }
                         }
                         //slaat de achterkant op
-                        Byte[] bytes2 = img_to_bytes(achterkant);
+                        Byte[] bytes2 = img_naar_bytes(achterkant);
 
                         var bestand2 = zip.CreateEntry("ACHTERKANT" + plaatjes_extenstie);
                         using (var entryStream = bestand2.Open())
@@ -342,16 +384,20 @@ namespace Memory_Game_Project
                         }
                     }
 
-                    //saves the archive to disk
+                    //saves the archief
                     using (var fileStream = new FileStream(save_bestand, FileMode.Create))
                     {
                         memoryStream.Seek(0, SeekOrigin.Begin);
                         memoryStream.CopyTo(fileStream);
                     }
                 }
+                if (encyptie)
+                {
+                    Encryption.encrypt_save(save_bestand);
+                }
             }
 
-            private static Byte[] img_to_bytes(Image img)
+            private static Byte[] img_naar_bytes(Image img)
             {
                 Byte[] bytes;
                 using (var stream = new MemoryStream())
@@ -536,6 +582,66 @@ namespace Memory_Game_Project
                     return project_map + saves_map + autosave_bestand;
                 }
                 return path;
+            }
+            private static class Encryption
+            {
+                //todo gebruik een temp bestand als outfile 
+                private static string password = @"myKey123";
+
+                public static void encrypt_save(string bestand)
+                {
+
+                    UnicodeEncoding UE = new UnicodeEncoding();
+                    byte[] key = UE.GetBytes(password);
+
+                    string cryptFile = bestand;
+                    FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
+
+                    RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                    Console.WriteLine(RMCrypto.BlockSize / 8);
+
+                    CryptoStream cs = new CryptoStream(fsCrypt,
+                        RMCrypto.CreateEncryptor(key, key),
+                        CryptoStreamMode.Write);
+
+                    FileStream fsIn = new FileStream(bestand, FileMode.Open);
+
+                    int data;
+                    while ((data = fsIn.ReadByte()) != -1)
+                        cs.WriteByte((byte) data);
+
+
+                    fsIn.Close();
+                    cs.Close();
+                    fsCrypt.Close();
+                }
+
+                public static void decrypt_save(string bestand)
+                {
+
+                    UnicodeEncoding UE = new UnicodeEncoding();
+                    byte[] key = UE.GetBytes(password);
+
+                    FileStream fsCrypt = new FileStream(bestand, FileMode.Open);
+
+                    RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                    CryptoStream cs = new CryptoStream(fsCrypt,
+                        RMCrypto.CreateDecryptor(key, key),
+                        CryptoStreamMode.Read);
+
+                    FileStream fsOut = new FileStream(bestand, FileMode.Create);
+
+                    int data;
+                    while ((data = cs.ReadByte()) != -1)
+                        fsOut.WriteByte((byte) data);
+
+                    fsOut.Close();
+                    cs.Close();
+                    fsCrypt.Close();
+
+                }
             }
         }
     }

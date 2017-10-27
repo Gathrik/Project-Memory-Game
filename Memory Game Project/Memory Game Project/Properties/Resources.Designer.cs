@@ -103,6 +103,16 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dc_icon {
+            get {
+                object obj = ResourceManager.GetObject("dc_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flash {
             get {
                 object obj = ResourceManager.GetObject("flash", resourceCulture);
@@ -126,6 +136,16 @@ namespace Memory_Game_Project.Properties {
         internal static System.Drawing.Bitmap martian {
             get {
                 object obj = ResourceManager.GetObject("martian", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap marvel_icon {
+            get {
+                object obj = ResourceManager.GetObject("marvel_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
