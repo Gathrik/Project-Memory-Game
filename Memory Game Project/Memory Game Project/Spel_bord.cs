@@ -203,6 +203,7 @@ namespace Memory_Game_Project
         private void load_test(object sender, EventArgs e)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             Object[] temp = Spel_Opslag.load_spel("", project_map);
             PictureBox[] kaarjes = (PictureBox[])temp[0];
             Image achterkant = (Image)temp[1];
@@ -220,14 +221,21 @@ namespace Memory_Game_Project
 =======
             Spel_Opslag.load_spel("", project_map);
 >>>>>>> parent of 13ecb0e... laden getest en werkt
+=======
+            Spel_Opslag.load_spel("", project_map);
+>>>>>>> parent of 13ecb0e... laden getest en werkt
         }
 
         private class Spel_Opslag
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             static private string saves_map = "\\saves\\";
             static private string temp_bestand = "temp";
             static private string autosave_bestand = "autosave.zip";
+=======
+            static private string autosave_path = "\\saves\\autosave.sav";
+>>>>>>> parent of 13ecb0e... laden getest en werkt
 =======
             static private string autosave_path = "\\saves\\autosave.sav";
 >>>>>>> parent of 13ecb0e... laden getest en werkt
@@ -261,9 +269,12 @@ namespace Memory_Game_Project
                  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 string save_bestand = resolve_path(filepath, project_map);
                 int imgs_index = 1;//(Jan) de array index waar de plaatjes worden opgeslagen
 =======
+=======
+>>>>>>> parent of 13ecb0e... laden getest en werkt
                 string save_bestand = resolve_path(filepath, project_map);//todo
                 int imgs_index = 1;
 >>>>>>> parent of 13ecb0e... laden getest en werkt
@@ -287,6 +298,7 @@ namespace Memory_Game_Project
                 }
 
                 //achterkant is een argument en word door gepassed
+<<<<<<< HEAD
 <<<<<<< HEAD
                 save_naar_zip(save_bestand, project_map, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
 
@@ -357,6 +369,13 @@ namespace Memory_Game_Project
 =======
             private static void save_naar_zip(int imgs_index, Object[,] kaart_data, Image achterkant,
 >>>>>>> parent of 13ecb0e... laden getest en werkt
+=======
+                save_naar_zip(imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
+
+            }
+
+            private static void save_naar_zip(int imgs_index, Object[,] kaart_data, Image achterkant,
+>>>>>>> parent of 13ecb0e... laden getest en werkt
                 string speler_1_naam_score, string speler_2_naam_score, int no_kaartjes)
             {
                 //saves het spel
@@ -405,8 +424,13 @@ namespace Memory_Game_Project
                     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     //saves the archief
                     using (var fileStream = new FileStream(save_bestand, FileMode.Create))
+=======
+                    //saves the archive to disk
+                    using (var fileStream = new FileStream(@"C:\Temp\test.zip", FileMode.Create))
+>>>>>>> parent of 13ecb0e... laden getest en werkt
 =======
                     //saves the archive to disk
                     using (var fileStream = new FileStream(@"C:\Temp\test.zip", FileMode.Create))
