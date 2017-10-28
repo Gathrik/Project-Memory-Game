@@ -180,8 +180,8 @@ namespace Memory_Game_Project
             }
         }
 
-        private Image get_achterkant()
-        {
+        private Image get_test_achterkant()
+        {//momenteel niet in gebruik
             // genereert een geheel zwart plaatje voor de achterkant van de kaartjes
             int hoogte_en_breete = 150;// de groote van het plaatje
             Image achterkant = new Bitmap(hoogte_en_breete, hoogte_en_breete, PixelFormat.Format24bppRgb);
@@ -207,6 +207,8 @@ namespace Memory_Game_Project
             Image achterkant = (Image)temp[1];
             string[] spelers_naam_score = (string[]) temp[2];
 
+            Console.WriteLine(kaarjes.Length.ToString());
+
             for (int i = 0; i < kaarjes.Length; i++)
             {
                 pictureBoxes[i].Tag = kaarjes[i].Tag;
@@ -219,7 +221,7 @@ namespace Memory_Game_Project
         private class Spel_Opslag
         {
             static private string saves_map = "\\saves\\";
-            static private string temp_bestand = "temp"
+            static private string temp_bestand = "temp";
             static private string autosave_bestand = "autosave.zip";
             static private string text_bestand_name = "savetext.txt";
             static private string plaatjes_extenstie = ".png";
@@ -274,7 +276,7 @@ namespace Memory_Game_Project
                 }
 
                 //achterkant is een argument en word door gepassed
-                save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
+                save_naar_zip(save_bestand, project_map, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
 
             }
 
@@ -305,9 +307,9 @@ namespace Memory_Game_Project
                 }
                 catch
                 {
-                    Encryption.decrypt_save(zip_filepath);
-                    save_tekst = get_save_tekst(zip_filepath);
                     Console.WriteLine("kan bestand niet lezen. is het encrypted?");
+                    Encryption.decrypt_save(zip_filepath, project_map);
+                    save_tekst = get_save_tekst(zip_filepath);
                 }
                 //parses tekst
                 Object[] temp = parse_save_tekst(save_tekst);
@@ -336,7 +338,7 @@ namespace Memory_Game_Project
             }
 
 
-            private static void save_naar_zip(string save_bestand, int imgs_index, Object[,] kaart_data, Image achterkant,
+            private static void save_naar_zip(string save_bestand, string project_map, int imgs_index, Object[,] kaart_data, Image achterkant,
                 string speler_1_naam_score, string speler_2_naam_score, int no_kaartjes)
             {
                 //saves het spel
@@ -393,7 +395,7 @@ namespace Memory_Game_Project
                 }
                 if (encyptie)
                 {
-                    Encryption.encrypt_save(save_bestand);
+                    Encryption.encrypt_save(save_bestand, project_map);
                 }
             }
 
@@ -531,7 +533,7 @@ namespace Memory_Game_Project
 
             private static Image[] laad_plaatjes(int aantal_plaatjes, string zip_filepath)
             {// returnt de plaatjes voor de pixtureboxes in volgorde
-             // de laatste index is het plaatje voor de achterkant
+                // de laatste index is het plaatje voor de achterkant
                 Image[] plaatjes = new Image[aantal_plaatjes + 1];
                 using (var file = File.OpenRead(zip_filepath))
                 {
@@ -588,42 +590,46 @@ namespace Memory_Game_Project
                 //todo gebruik een temp bestand als outfile 
                 private static string password = @"myKey123";
 
-                public static void encrypt_save(string bestand)
+                public static void encrypt_save(string input_bestand, string projectmap)
                 {
+                    string temp_bestand_path = projectmap + saves_map + temp_bestand;
 
                     UnicodeEncoding UE = new UnicodeEncoding();
                     byte[] key = UE.GetBytes(password);
 
-                    string cryptFile = bestand;
+                    string cryptFile = temp_bestand_path;
                     FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
 
                     RijndaelManaged RMCrypto = new RijndaelManaged();
-
-                    Console.WriteLine(RMCrypto.BlockSize / 8);
 
                     CryptoStream cs = new CryptoStream(fsCrypt,
                         RMCrypto.CreateEncryptor(key, key),
                         CryptoStreamMode.Write);
 
-                    FileStream fsIn = new FileStream(bestand, FileMode.Open);
+                    FileStream fsIn = new FileStream(input_bestand, FileMode.Open);
 
                     int data;
                     while ((data = fsIn.ReadByte()) != -1)
-                        cs.WriteByte((byte) data);
+                        cs.WriteByte((byte)data);
 
 
                     fsIn.Close();
                     cs.Close();
                     fsCrypt.Close();
+
+                    kopieer_en_verwijder_temp(input_bestand, temp_bestand_path);
+
                 }
 
-                public static void decrypt_save(string bestand)
+                public static void decrypt_save(string input_bestand, string projectmap)
                 {
+                    string temp_bestand_path = projectmap + saves_map + temp_bestand;
+
 
                     UnicodeEncoding UE = new UnicodeEncoding();
                     byte[] key = UE.GetBytes(password);
 
-                    FileStream fsCrypt = new FileStream(bestand, FileMode.Open);
+                    FileStream fsCrypt = new FileStream(input_bestand, FileMode.Open);
 
                     RijndaelManaged RMCrypto = new RijndaelManaged();
 
@@ -631,16 +637,28 @@ namespace Memory_Game_Project
                         RMCrypto.CreateDecryptor(key, key),
                         CryptoStreamMode.Read);
 
-                    FileStream fsOut = new FileStream(bestand, FileMode.Create);
+                    FileStream fsOut = new FileStream(temp_bestand_path, FileMode.Create);
 
                     int data;
                     while ((data = cs.ReadByte()) != -1)
-                        fsOut.WriteByte((byte) data);
+                        fsOut.WriteByte((byte)data);
 
                     fsOut.Close();
                     cs.Close();
                     fsCrypt.Close();
 
+                    kopieer_en_verwijder_temp(input_bestand, temp_bestand_path);
+
+                }
+
+                private static void kopieer_en_verwijder_temp(string output_bestand, string temp_bestand_path)
+                {
+                    if (File.Exists(output_bestand))
+                    {
+                        File.Delete(output_bestand);
+                    }
+                    File.Copy(temp_bestand_path, output_bestand);
+                    File.Delete(temp_bestand_path);
                 }
             }
         }
