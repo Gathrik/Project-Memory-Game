@@ -48,8 +48,6 @@ namespace Memory_Game_Project
             Show();
         }
 
-
-
         private void geef_events()
         {
             for (int i = 0; i < pictureBoxes.Length; i++)
@@ -57,7 +55,6 @@ namespace Memory_Game_Project
                 pictureBoxes[i].Click += new EventHandler(picturebox_klik);
             }
         }
-
 
 
         private PictureBox[] pictureBoxes
@@ -203,26 +200,33 @@ namespace Memory_Game_Project
         private void load_test(object sender, EventArgs e)
         {
             Object[] temp = Spel_Opslag.load_spel("", project_map);
-            PictureBox[] kaarjes = (PictureBox[])temp[0];
-            Image achterkant = (Image)temp[1];
-            string[] spelers_naam_score = (string[]) temp[2];
+            Image[] plaatjes = (Image[])temp[0];
+            bool[] omgedraait = (bool[])temp[1];
+            Image achterkant = (Image)temp[2];
+            string[] spelers_naam_score = (string[]) temp[3];
 
-            Console.WriteLine(kaarjes.Length.ToString());
-
-            for (int i = 0; i < kaarjes.Length; i++)
+            for (int i = 0; i < plaatjes.Length; i++)
             {
-                pictureBoxes[i].Tag = kaarjes[i].Tag;
-                pictureBoxes[i].Image = kaarjes[i].Image;
+                pictureBoxes[i].Tag = plaatjes[i];
+                if (omgedraait[i])
+                {
+                    pictureBoxes[i].Image = plaatjes[i];
+                }
+                else
+                {
+                    pictureBoxes[i].Image = achterkant;
+                }
             }
 
             plaatje_achterkant = achterkant;
+            Console.WriteLine("spel geladen");
         }
 
         private class Spel_Opslag
         {
             static private string saves_map = "\\saves\\";
             static private string temp_bestand = "temp";
-            static private string autosave_bestand = "autosave.zip";
+            static private string autosave_bestand = "autosave.sav";
             static private string text_bestand_name = "savetext.txt";
             static private string plaatjes_extenstie = ".png";
             static private ImageFormat plaatjes_format = ImageFormat.Png;
@@ -230,25 +234,26 @@ namespace Memory_Game_Project
 
             public static void save_spel(PictureBox[] kaartjes, Image achterkant, string speler_1_naam_score,
                     string speler_2_naam_score, string filepath,  string project_map)
-                /* (Jan) door deze methode to callen sla je het spel op.
-                 * de methode gebruikt de volgende args:
-                 *
-                 * achterkant is het plaatje dat gebruikt is voor de achterkant
-                 *
-                 * filepath: het filepath waar het bestand opgeslagen zal worden.
-                 * als opslapath leeg is word het spel op de autosave locatie opgeslagen.
-                 *
-                 * kaartjes: een 1d array van de pictureboxes
-                 *
-                 * speler 1 en 2 naam en score: een string met de naam en de score van elke speler
-                 * bijvoorbeeld: "Anna score: 15"
-                 *
-                 * project_map: de root map van het project
-                 * als opslapath niet leeg is word dit genegeerd
-                 *
-                 * todo (Jan) een spel opslaan als de saves map niet bestaad veroorzaakt een crash
-                 * */
+
             {
+                /* (Jan) door deze methode to callen sla je het spel op.
+                * de methode gebruikt de volgende args:
+                *
+                * achterkant is het plaatje dat gebruikt is voor de achterkant
+                *
+                * filepath: het filepath waar het bestand opgeslagen zal worden.
+                * als opslapath leeg is word het spel op de autosave locatie opgeslagen.
+                *
+                * kaartjes: een 1d array van de pictureboxes
+                *
+                * speler 1 en 2 naam en score: een string met de naam en de score van elke speler
+                * bijvoorbeeld: "Anna score: 15"
+                *
+                * project_map: de root map van het project
+                * als opslapath niet leeg is word dit genegeerd
+                *
+                * todo (Jan) een spel opslaan als de saves map niet bestaad veroorzaakt een crash
+                * */
                 /*
                  * de status van het spelbord worden in een textbestand opgeslagen.
                  * in dat zelfde zip bestand
@@ -277,7 +282,7 @@ namespace Memory_Game_Project
 
                 //achterkant is een argument en word door gepassed
                 save_naar_zip(save_bestand, project_map, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
-
+                Console.WriteLine("opgeslagen");
             }
 
             public static object[] load_spel(string zip_filepath, string project_map)
@@ -320,7 +325,7 @@ namespace Memory_Game_Project
                 //loads plaatjes
                 Image[] temp_plaatjes = laad_plaatjes(aantal_plaatjes, zip_filepath);//het achterste plaatje is de achterkant
                 Image[] plaatjes = new Image[temp_plaatjes.Length-1];
-                for (int i = 0; i < plaatjes.Length; i++)
+                for (int i = 0; i < aantal_plaatjes; i++)
                 {
                     plaatjes[i] = temp_plaatjes[i];
                 }
@@ -329,10 +334,11 @@ namespace Memory_Game_Project
                 //maakt pictureboxes
                 PictureBox[] picture_boxes = get_pictureboxes(plaatjes, achterkant, kaart_omgedraait);
 
-                Object[] retrn = new object[3];
-                retrn[0] = picture_boxes;
-                retrn[1] = achterkant;
-                retrn[2] = spelers_naam_score;
+                Object[] retrn = new object[4];
+                retrn[0] = plaatjes;
+                retrn[1] = kaart_omgedraait;
+                retrn[2] = achterkant;
+                retrn[3] = spelers_naam_score;
 
                 return retrn;
             }
@@ -437,7 +443,7 @@ namespace Memory_Game_Project
             }
 
             private static PictureBox[] get_pictureboxes(Image[] plaatjes, Image achterkant, bool[] kaart_omgedraait)
-            {
+            {//(Jan) deprecated niet meer in gebruik
                 List<PictureBox> picture_boxes = new List<PictureBox>();
 
                 for (int i = 0; i < kaart_omgedraait.Length; i++)
@@ -539,7 +545,7 @@ namespace Memory_Game_Project
                 {
                     using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
                     {
-                        for (int i = 0; i < aantal_plaatjes-1; i++)
+                        for (int i = 0; i < aantal_plaatjes; i++)
                         {
                             string bestandsnaam = i + plaatjes_extenstie;
                             // deze regel opent de enty met de bestandsnaam en zet het om naar een image
@@ -588,7 +594,7 @@ namespace Memory_Game_Project
             private static class Encryption
             {
                 //todo gebruik een temp bestand als outfile 
-                private static string password = @"myKey123";
+                private static string password = @"byd6hg9l";
 
                 public static void encrypt_save(string input_bestand, string projectmap)
                 {
