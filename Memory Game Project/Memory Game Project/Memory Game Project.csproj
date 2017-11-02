@@ -142,5 +142,14 @@
   <ItemGroup>
     <None Include="Resources\marvel_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mix_n_match_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageedit_1_3125092949.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iron_man_png_render_by_mrvideo_vidman-d9volq1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

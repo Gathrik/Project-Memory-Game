@@ -118,43 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="superman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\superman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mix_n_match_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mix_n_match_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="batman" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\batman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="aquaman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\aquaman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cyborg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cyborg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lantern" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lantern.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="martian" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\martian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wonder_woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wonder_woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="B25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\b-25-mitchell-bomber-yankee-warrior-photo-print-61.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="muziek11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\muziek11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="aquaman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aquaman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="muziek2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\muziek2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dc_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dc_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="martian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\martian.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imageedit_1_3125092949" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imageedit_1_3125092949.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="marvel_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\marvel_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lantern" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lantern.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="superman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\superman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dc_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dc_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="B25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\b-25-mitchell-bomber-yankee-warrior-photo-print-61.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wonder_woman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wonder_woman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="muziek11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\muziek11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iron_man_png_render_by_mrvideo_vidman-d9volq1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iron_man_png_render_by_mrvideo_vidman-d9volq1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

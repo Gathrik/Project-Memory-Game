@@ -123,6 +123,26 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imageedit_1_3125092949 {
+            get {
+                object obj = ResourceManager.GetObject("imageedit_1_3125092949", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iron_man_png_render_by_mrvideo_vidman_d9volq1 {
+            get {
+                object obj = ResourceManager.GetObject("iron_man_png_render_by_mrvideo_vidman-d9volq1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lantern {
             get {
                 object obj = ResourceManager.GetObject("lantern", resourceCulture);
@@ -146,6 +166,16 @@ namespace Memory_Game_Project.Properties {
         internal static System.Drawing.Bitmap marvel_icon {
             get {
                 object obj = ResourceManager.GetObject("marvel_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mix_n_match_icon {
+            get {
+                object obj = ResourceManager.GetObject("mix_n_match_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
