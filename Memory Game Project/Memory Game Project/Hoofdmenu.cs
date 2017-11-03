@@ -21,7 +21,7 @@ namespace prototype
         {
             InitializeComponent();
             huidige_thema_label.Text = themas[themaIndex];
-        }
+        }        
 
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -62,6 +62,13 @@ namespace prototype
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void open_maak_thema(object sender, EventArgs e)
+        {
+
+            Thema_Ontwerper thema_ontwerper = new Thema_Ontwerper();
+            Hide();
         }
     }
 }
