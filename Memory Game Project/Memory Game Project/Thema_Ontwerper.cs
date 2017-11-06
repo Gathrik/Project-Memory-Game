@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prototype;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,18 +14,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
+
 // ReSharper disable All
 
 namespace Memory_Game_Project
 {
     public partial class Thema_Ontwerper : Form
     {
+        static private Hoofdmenu hoofdmenu;
         static private string plaatjes_extenstie = ".png";
         static private ImageFormat plaatjes_format = ImageFormat.Png;
 
-        public Thema_Ontwerper()
+        public Thema_Ontwerper(Hoofdmenu hoofdmenu_arg)
         {
             InitializeComponent();
+            hoofdmenu = hoofdmenu_arg;
             Show();
         }
 
@@ -45,8 +49,6 @@ namespace Memory_Game_Project
                 {
                 }
             }
-
-
         }
 
         private PictureBox[] pictureBoxes
@@ -62,10 +64,6 @@ namespace Memory_Game_Project
             Application.Exit();
         }
 
-        private void Thema_Ontwerper_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private int string_naar_int(string a)
         {
@@ -96,10 +94,10 @@ namespace Memory_Game_Project
             {
                 MessageBox.Show("ERROR: geen naam voor dit thema opgegeven.");
                 return;
-            }//todo(Jan) resize de plaatjes voor opslaan
+            }
 
             string themamap = Utils.get_themas_dir() + textBox1.Text + @"\";
-            System.IO.Directory.CreateDirectory(themamap );
+            Directory.CreateDirectory(themamap );
 
                 foreach (PictureBox box in pictureBoxes)
                 {
@@ -112,9 +110,26 @@ namespace Memory_Game_Project
                     {
                         box.Image.Save(themamap + "achterkant" + plaatjes_extenstie, plaatjes_format);
                     }
-                }
+                }//todo messagebox toevoegen die de gebruiker laat weten dat het thema gemaakt is
             Console.WriteLine("thema gemaakt");
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void terug_naar_hoofdmenu_kilik(object sender, EventArgs e)
+        {
+            hoofdmenu.setup_combo_box();
+            hoofdmenu.Show();
+            Hide();
+            Dispose();
+        }
     }
 }
