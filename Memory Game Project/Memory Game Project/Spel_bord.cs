@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Memory_Game_Project.Properties;
 using prototype;
 using System.IO.Compression;
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Windows.Forms.VisualStyles;
 
@@ -24,7 +25,7 @@ namespace Memory_Game_Project
     public partial class Spel_bord : Form
     {
         bool allowClick = true;
-        string themaExtensie;
+        string thema;
         PictureBox firstGuess;
         Random random = new Random();
         private Image[] plaatjes;
@@ -35,11 +36,13 @@ namespace Memory_Game_Project
         String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
 
 
-        public Spel_bord(Hoofdmenu hoofdmenu_arg)
+        public Spel_bord(Hoofdmenu hoofdmenu_arg, string thema_arg)
         {
             InitializeComponent();
+            thema = thema_arg;
+            Console.WriteLine(thema_arg);
             checkThema();
-            plaatjes = get_plaatjes();
+            //plaatjes = get_plaatjes();
             //plaatje_achterkant = get_achterkant();
             hoofdmenu = hoofdmenu_arg;
             RandomizePictures();
@@ -96,7 +99,7 @@ namespace Memory_Game_Project
 
         private void restart_click(object sender, EventArgs e)
         {// (Jan) deze methode herstart het spel door een nieuw spelbord  te instantieren
-            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu);
+            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, thema);
             Hide();
             Dispose();
         }
@@ -125,55 +128,77 @@ namespace Memory_Game_Project
             }
         }
 
-        private Image[] get_plaatjes()
+        private void get_standaard_thema()
         {
-            // get eerst de map voor het project en dan voor de plaatjes
-            // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
-            String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
-            String map_met_plaatjes = "\\Resources\\";
-
-            // maakt een list met de filepath van de plaatjes
-            String[] bestanden_in_map = Directory.GetFiles(project_map + map_met_plaatjes);
-            List<string> plaatjes_filepaths = new List<string> { };
-            foreach (String bestand in bestanden_in_map)
+            Image[] ret_plaatjes = new Image[8];
+            switch (thema)
             {
-                if (bestand.Contains(themaExtensie))
+                case "DC":
                 {
-                    plaatjes_filepaths.Add(bestand);
+                    ret_plaatjes = new Image[]{
+                        Resources.aquaman_dc,
+                        Resources.batman_dc,
+                        Resources.cyborg_dc,
+                        Resources.flash_dc,
+                        Resources.lantern_dc,
+                        Resources.martian_dc,
+                        Resources.superman_dc,
+                        Resources.wonder_woman_dc
+                    };
+                    break;
+                }
+
+                case "Marvel":
+                {
+                    ret_plaatjes = new Image[]
+                    {
+                        Resources.black_panther_marvel,
+                        Resources.captain_america_marvel,
+                        Resources.dr_strange_marvel,
+                        Resources.hulk_marvel,
+                        Resources.ironman_marvel,
+                        Resources.spiderman_marvel,
+                        Resources.thor_marvel,
+                        Resources.marvelicon_marvel
+                    };
+                    break;
                 }
             }
-
-            // laad alle plaatjes in een array en returnt de array
-            Image[] plaatjes = new Image[plaatjes_filepaths.Count];
-            for (int i = 0; i < plaatjes_filepaths.Count; i++)
-            {
-                plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
-            }
-            return plaatjes;
+            plaatjes = ret_plaatjes;
         }
 
-        private void checkThema() // (Garik) Weet niet wat beter is, een if statement of gewoon switches
+        private void load_custom_thema()
         {
-            /* if (Hoofdmenu.themaIndex == 0)
-             {
-                 themaExtensie = "_dc.png";
-             } else
-             {
-                 themaExtensie = "_marvel.png";
-             } */
+            string thema_map = Utils.get_themas_dir() + thema + @"\";
+            int plaatjes_op_bord = 8;
+            string plaatjes_exstentsie = ".png";
+            Image[] ret_plaatjes = new Image[plaatjes_op_bord];
 
-            int themaSwitch = Hoofdmenu.themaIndex;
-
-            switch (themaSwitch)
+            for (int i = 0; i < plaatjes_op_bord; i++)
             {
-                case 0:
-                    plaatje_achterkant = Resources.dc_icon;
-                    themaExtensie = "_dc.png";
-                    break;
-                case 1:
-                    plaatje_achterkant = Resources.marvel_icon;
-                    themaExtensie = "_marvel.png";
-                    break;
+                ret_plaatjes[i] = Image.FromFile(thema_map + (i+1).ToString() + plaatjes_exstentsie);
+            }
+            plaatje_achterkant = Image.FromFile(thema_map + "ACHTERKANT" + plaatjes_exstentsie);
+
+            plaatjes = ret_plaatjes;
+        }
+
+        private void checkThema()
+        {
+
+            if (thema == "DC")
+            {
+                plaatje_achterkant = Resources.dc_icon;
+                get_standaard_thema();
+            }
+            else if (thema == "Marvel")
+            {
+                plaatje_achterkant = Resources.marvel_icon;
+                get_standaard_thema();
+            }
+            else
+            {
+                load_custom_thema();
             }
         }
 
@@ -195,12 +220,12 @@ namespace Memory_Game_Project
         {
             
             Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, "speler 1 test",
-                "speler 2 test", "", project_map);
+                "speler 2 test", "");
         }
 
         private void load_test(object sender, EventArgs e)
         {
-            Object[] temp = Spel_Opslag.load_spel("", project_map);
+            Object[] temp = Spel_Opslag.load_spel("");
             Image[] plaatjes = (Image[])temp[0];
             bool[] omgedraait = (bool[])temp[1];
             Image achterkant = (Image)temp[2];

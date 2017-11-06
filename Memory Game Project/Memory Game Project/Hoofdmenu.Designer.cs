@@ -34,13 +34,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.multiplayer_knop = new System.Windows.Forms.Button();
             this.huidige_thema_label = new System.Windows.Forms.Label();
-            this.verander_thema_knop = new System.Windows.Forms.Button();
             this.highscore_knop = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.themas_combobox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -111,16 +112,6 @@
             this.huidige_thema_label.Text = "thema";
             this.huidige_thema_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // verander_thema_knop
-            // 
-            this.verander_thema_knop.Location = new System.Drawing.Point(259, 379);
-            this.verander_thema_knop.Name = "verander_thema_knop";
-            this.verander_thema_knop.Size = new System.Drawing.Size(100, 40);
-            this.verander_thema_knop.TabIndex = 12;
-            this.verander_thema_knop.Text = "Verander Thema";
-            this.verander_thema_knop.UseVisualStyleBackColor = true;
-            this.verander_thema_knop.Click += new System.EventHandler(this.verander_thema_klik);
-            // 
             // highscore_knop
             // 
             this.highscore_knop.Location = new System.Drawing.Point(342, 252);
@@ -175,13 +166,34 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(363, 379);
+            this.button1.Location = new System.Drawing.Point(342, 379);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 19;
             this.button1.Text = "maak thema";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.open_maak_thema);
+            // 
+            // themas_combobox
+            // 
+            this.themas_combobox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.themas_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.themas_combobox.FormattingEnabled = true;
+            this.themas_combobox.Location = new System.Drawing.Point(213, 398);
+            this.themas_combobox.Name = "themas_combobox";
+            this.themas_combobox.Size = new System.Drawing.Size(121, 21);
+            this.themas_combobox.TabIndex = 20;
+            this.themas_combobox.SelectedIndexChanged += new System.EventHandler(this.themas_combobox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(232, 379);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Kies thema";
             // 
             // Hoofdmenu
             // 
@@ -190,12 +202,13 @@
             this.BackgroundImage = global::Memory_Game_Project.Properties.Resources.mix_n_match_icon;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(621, 445);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.themas_combobox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.highscore_knop);
             this.Controls.Add(this.huidige_thema_label);
-            this.Controls.Add(this.verander_thema_knop);
             this.Controls.Add(this.multiplayer_knop);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.muziek_checkbox);
@@ -208,6 +221,7 @@
             this.MaximizeBox = false;
             this.Name = "Hoofdmenu";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Hoofdmenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -225,13 +239,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button multiplayer_knop;
         private System.Windows.Forms.Label huidige_thema_label;
-        private System.Windows.Forms.Button verander_thema_knop;
         private System.Windows.Forms.Button highscore_knop;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox themas_combobox;
+        private System.Windows.Forms.Label label1;
     }
 }
 

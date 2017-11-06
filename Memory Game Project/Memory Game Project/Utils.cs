@@ -21,43 +21,59 @@ namespace Memory_Game_Project
             var destRect = new Rectangle(0, 0, width, height);
             var destImage = new Bitmap(width, height);
 			
-			if (image.Width != width || image.Height != height)
-			{
-				destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
+            if (image.Width != width || image.Height != height)
             {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-                using (var wrapMode = new ImageAttributes())
+                using (var graphics = Graphics.FromImage(destImage))
                 {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.CompositingMode = CompositingMode.SourceCopy;
+                    graphics.CompositingQuality = CompositingQuality.HighQuality;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.SmoothingMode = SmoothingMode.HighQuality;
+                    graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                    using (var wrapMode = new ImageAttributes())
+                    {
+                        wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                        graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                    }
                 }
             }
-			}
-			else
-			{
-				return (Bitmap)image;
-			}	
+            else
+            {
+                return (Bitmap)image;
+            }
 
 
             return destImage;
         }
 
-        public static string get_themas_dir()
+        public static string get_bestanden_dir()
         {
             string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             if (Environment.OSVersion.Version.Major >= 6)
             {
                 path = Directory.GetParent(path).ToString();
             }
+            path += @"\Documents\memory game\";
+            Directory.CreateDirectory(path);
+            return path;
+        }
 
-            path += @"\Documents\memory game\themas\";
+        public static string get_themas_dir()
+        {
+            string path = get_bestanden_dir();
+            path += @"themas\";
+            Directory.CreateDirectory(path);
+            return path;
+        }
+
+        public static string get_saves_dir()
+        {
+            string path = get_bestanden_dir();
+            path += @"saves\";
+            Directory.CreateDirectory(path);
             return path;
         }
     }
