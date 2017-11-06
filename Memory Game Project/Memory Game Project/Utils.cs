@@ -57,6 +57,7 @@ namespace Memory_Game_Project
                 path = Directory.GetParent(path).ToString();
             }
             path += @"\Documents\memory game\";
+            Directory.CreateDirectory(path);
             return path;
         }
 
@@ -64,6 +65,7 @@ namespace Memory_Game_Project
         {
             string path = get_bestanden_dir();
             path += @"themas\";
+            Directory.CreateDirectory(path);
             return path;
         }
 
@@ -71,6 +73,7 @@ namespace Memory_Game_Project
         {
             string path = get_bestanden_dir();
             path += @"saves\";
+            Directory.CreateDirectory(path);
             return path;
         }
     }
