@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFE23E7A-ADEA-4D63-B74C-9C6BD475B8BE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Memory_Game_Project</RootNamespace>
+    <AssemblyName>Memory Game Project</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\temp\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8154FAD3E3302A74E66E4DC29C2BC9BC7FEF189D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Memory Game Project_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Spel_Opslag.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Thema_Ontwerper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Thema_Ontwerper.Designer.cs">
+      <DependentUpon>Thema_Ontwerper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Spel_bord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Spel_bord.Designer.cs">
+      <DependentUpon>Spel_bord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hoofdmenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hoofdmenu.Designer.cs">
+      <DependentUpon>Hoofdmenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Thema_Ontwerper.resx">
+      <DependentUpon>Thema_Ontwerper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Spel_bord.resx">
+      <DependentUpon>Spel_bord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hoofdmenu.resx">
+      <DependentUpon>Hoofdmenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Memory Game Project_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aquaman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\superman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\martian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wonder_woman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lantern.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\batman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cyborg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b-25-mitchell-bomber-yankee-warrior-photo-print-61.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muziek2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muziek11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dc_icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dc_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marvel_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mix_n_match_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageedit_1_3125092949.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iron_man_png_render_by_mrvideo_vidman-d9volq1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wonder_woman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thor_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\superman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spiderman_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marvelicon_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\martian_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lantern_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ironman_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hulk_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dr_strange_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cyborg_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_america_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_panther_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\batman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aquaman_dc.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
