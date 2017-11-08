@@ -104,9 +104,7 @@ namespace prototype
             //Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
 
             SpawnCards();
-
-            Hide();
-            
+            Hide();    
         }
 
         private void multiplayer_klik(object sender, EventArgs e)
