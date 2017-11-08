@@ -133,20 +133,14 @@ namespace Memory_Game_Project
             if (huidig_plaatje.Image != huidig_plaatje.Tag )
             {
                 draaiplaatjeom(huidig_plaatje);
-
                 if (vorig_kaartje == null)
                 {
                     vorig_kaartje = huidig_plaatje;
-
-
                 }
                 else
                 {
-
-
                     if (vorig_kaartje.Tag == huidig_plaatje.Tag)
                     {
-
                         if (speler1_aan_de_beurt)
                         {
                             geef_speler1_punt();
@@ -154,6 +148,19 @@ namespace Memory_Game_Project
                         else
                         {
                             geef_speler2_punt();
+                        }
+                        bool spel_klaar = true;
+                        foreach(PictureBox box in pictureBoxes)
+                        {
+                            if (box.Image != box.Tag)
+                            {
+                                spel_klaar = false;
+                                break;
+                            }
+                        }
+                        if (spel_klaar)
+                        {
+                            einde_spel();
                         }
                         vorig_kaartje = null;
                     }
@@ -167,16 +174,11 @@ namespace Memory_Game_Project
                         {
                             speler1_aan_de_beurt = true;
                         }
-
                         draai_kaartjes_weer_om(huidig_plaatje, vorig_kaartje, 5);
                         speleraandebeurttext();
                     }
-
-
-
                 }
             }
- 
         }
 
         private void speleraandebeurttext()
@@ -237,8 +239,13 @@ namespace Memory_Game_Project
             {
                 (box as PictureBox).Image = plaatje_achterkant;
             }
+        }
 
-}
+        private void einde_spel()
+        {
+            Console.WriteLine("einde spel");
+        }
+
         private Image[] get_plaatjes()
         {
             // get eerst de map voor het project en dan voor de plaatjes
