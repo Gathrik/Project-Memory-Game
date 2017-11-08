@@ -21,7 +21,12 @@ namespace Memory_Game_Project
             InitializeComponent();
             var scores = ReadScoresFromFile("Highscores.txt");
             scores.ForEach(s => Console.WriteLine(s));
-            //scoreLabel.Text = File.ReadAllText("Highscores.txt");
+            foreach (var score in scores)
+            {
+                string score_string = string.Format("{0} {1} {2}", score.positie, score.naam, score.score);
+                scoreLabel.Text += score_string + Environment.NewLine;
+                Console.WriteLine(score_string);
+            }
         }
 
         public class Highscore
@@ -80,6 +85,7 @@ namespace Memory_Game_Project
             return SorteerPosEnScore(scores);
         }
 
+        //Sorteer de posities van de spelers door te kijken naar hun score 
         static List<Highscore> SorteerPosEnScore(List<Highscore> scores)
         {
             scores = scores.OrderByDescending(s => s.score).ToList();
