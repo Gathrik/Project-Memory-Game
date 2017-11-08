@@ -25,9 +25,7 @@ namespace Memory_Game_Project
 {
     public partial class Spel_bord : Form
     {
-        bool allowClick = true;
         string themaExtensie;
-        PictureBox firstGuess;
         Random random = new Random();
         private Image[] plaatjes;
         private Image plaatje_achterkant;

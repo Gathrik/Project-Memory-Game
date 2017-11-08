@@ -21,6 +21,7 @@ namespace Memory_Game_Project
             InitializeComponent();
             var scores = ReadScoresFromFile("Highscores.txt");
             scores.ForEach(s => Console.WriteLine(s));
+            //scoreLabel.Text = File.ReadAllText("Highscores.txt");
         }
 
         public class Highscore
