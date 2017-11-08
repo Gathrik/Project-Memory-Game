@@ -85,6 +85,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Highscores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Highscores.Designer.cs">
+      <DependentUpon>Highscores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Spel_Opslag.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Thema_Ontwerper.cs">
@@ -107,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Highscores.resx">
+      <DependentUpon>Highscores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Thema_Ontwerper.resx">
       <DependentUpon>Thema_Ontwerper.cs</DependentUpon>
     </EmbeddedResource>
