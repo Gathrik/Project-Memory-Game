@@ -33,11 +33,6 @@ namespace Memory_Game_Project
         PictureBox vorig_kaartje = null;
         bool speler1_aan_de_beurt = true;
         string thema;
-       
-        
-        
-        // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
-        //String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
 
 
         public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg, string thema_arg)

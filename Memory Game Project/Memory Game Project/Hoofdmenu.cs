@@ -101,11 +101,8 @@ namespace prototype
             string naamspeler2 = textBox2.Text;
             //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
 
-<<<<<<< HEAD
             Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text, themas_combobox.Text);
-=======
-            //Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
->>>>>>> 4b389de702e273eeb23865c262532cc2713e1ef0
+
 
             SpawnCards();
             Hide();    
