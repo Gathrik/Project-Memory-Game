@@ -215,7 +215,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 22;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -223,7 +222,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 23;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -242,7 +240,6 @@
             this.label4.Size = new System.Drawing.Size(96, 17);
             this.label4.TabIndex = 25;
             this.label4.Text = "Naam speler2";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Hoofdmenu
             // 
