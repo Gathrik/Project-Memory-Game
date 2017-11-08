@@ -58,7 +58,7 @@ namespace Memory_Game_Project
         static List<Highscore> ReadScoresFromFile(String path)
         {
             var scores = new List<Highscore>();
-
+            File.AppendText(path).Close();
             using (StreamReader reader = new StreamReader(path))
             {
                 String line;
@@ -96,6 +96,11 @@ namespace Memory_Game_Project
             hoofdmenu.Show();
             Hide();
             Dispose();
+        }
+
+        private void kruisje_klik(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

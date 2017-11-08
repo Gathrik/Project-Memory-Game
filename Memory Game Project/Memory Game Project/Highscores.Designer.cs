@@ -90,6 +90,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Highscores";
             this.Text = "Highscores";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kruisje_klik);
             this.ResumeLayout(false);
             this.PerformLayout();
 
