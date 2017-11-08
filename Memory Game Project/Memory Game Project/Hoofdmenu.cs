@@ -99,15 +99,6 @@ namespace prototype
         {
             string naamspeler1 = textBox1.Text;
             string naamspeler2 = textBox2.Text;
-<<<<<<< HEAD
-            //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
-
-            Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text, themas_combobox.Text);
-
-
-            SpawnCards();
-            Hide();    
-=======
             if (naamspeler1 != string.Empty && naamspeler2 != string.Empty)
             {
                 //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
@@ -122,7 +113,7 @@ namespace prototype
             }
             
               
->>>>>>> 7a56d56b98ef30df00de02d4122feb108fa5ec8f
+
         }
 
         private void multiplayer_klik(object sender, EventArgs e)

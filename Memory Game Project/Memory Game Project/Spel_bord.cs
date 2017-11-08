@@ -51,7 +51,6 @@ namespace Memory_Game_Project
             speleraandebeurttext();
             Show();
 
-            einde_spel();
         }
 
         private void geef_events()
@@ -127,7 +126,7 @@ namespace Memory_Game_Project
             // todo beide spelers krijgen steeds een punt
             // todo als steeds op een plaatje klikt krijgt je punten
 
-            if (huidig_plaatje.Image != huidig_plaatje.Tag )
+            if (huidig_plaatje.Image != huidig_plaatje.Tag)
             {
                 draaiplaatjeom(huidig_plaatje);
                 if (vorig_kaartje == null)
@@ -147,7 +146,7 @@ namespace Memory_Game_Project
                             geef_speler2_punt();
                         }
                         bool spel_klaar = true;
-                        foreach(PictureBox box in pictureBoxes)
+                        foreach (PictureBox box in pictureBoxes)
                         {
                             if (box.Image != box.Tag)
                             {
@@ -158,6 +157,10 @@ namespace Memory_Game_Project
                         if (spel_klaar)
                         {
                             einde_spel();
+                        }
+                        else
+                        {
+                            opslaan("");
                         }
                         vorig_kaartje = null;
                     }
@@ -192,10 +195,10 @@ namespace Memory_Game_Project
             }
         }
 
-       
+
         private async void draai_kaartjes_weer_om(PictureBox kaartje1, PictureBox kaartje2, int seconden_wachtijd)
         {
-            
+
             await Task.Delay(seconden_wachtijd * 100);
             draaiplaatjeom(kaartje1);
             draaiplaatjeom(kaartje2);
@@ -205,13 +208,13 @@ namespace Memory_Game_Project
         private void geef_speler1_punt()
         {
             double score = double.Parse(Scorespeler1.Text);
-            score = ( score + 2);
+            score = (score + 2);
             score = (score - 1);
 
-          
-            
+
+
             Scorespeler1.Text = score.ToString();
-            
+
         }
 
         private void geef_speler2_punt()
@@ -220,7 +223,7 @@ namespace Memory_Game_Project
 
             int score2 = int.Parse(Scorespeler2.Text);
             score2++;
-            
+
             Scorespeler2.Text = score2.ToString();
 
 
@@ -248,7 +251,7 @@ namespace Memory_Game_Project
             File.AppendText(highscore_bestand).Close();
             System.IO.File.AppendAllText(highscore_bestand, get_winnaar_tekst());
             //speler1_aan_de_beurt is true als speler 1 aan de beurt is else false
-           
+
         }
 
         private string get_winnaar_tekst()
@@ -277,33 +280,33 @@ namespace Memory_Game_Project
             }
             return string.Format("{0},{1}{2}", winnaar, highscore, Environment.NewLine);
         }
-/* (JAN)DEPRECATED
-        private Image[] get_plaatjes()
-        {
-            // get eerst de map voor het project en dan voor de plaatjes
-            // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
-            String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
-            String map_met_plaatjes = "\\Resources\\";
-
-            // maakt een list met de filepath van de plaatjes
-            String[] bestanden_in_map = Directory.GetFiles(project_map + map_met_plaatjes);
-            List<string> plaatjes_filepaths = new List<string> { };
-            foreach (String bestand in bestanden_in_map)
-            {
-                if (bestand.Contains(themaExtensie))
+        /* (JAN)DEPRECATED
+                private Image[] get_plaatjes()
                 {
-                    plaatjes_filepaths.Add(bestand);
-                }
-            }
+                    // get eerst de map voor het project en dan voor de plaatjes
+                    // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
+                    String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
+                    String map_met_plaatjes = "\\Resources\\";
 
-            // laad alle plaatjes in een array en returnt de array
-            Image[] plaatjes = new Image[plaatjes_filepaths.Count];
-            for (int i = 0; i < plaatjes_filepaths.Count; i++)
-            {
-                plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
-            }
-            return plaatjes;
-        }*/
+                    // maakt een list met de filepath van de plaatjes
+                    String[] bestanden_in_map = Directory.GetFiles(project_map + map_met_plaatjes);
+                    List<string> plaatjes_filepaths = new List<string> { };
+                    foreach (String bestand in bestanden_in_map)
+                    {
+                        if (bestand.Contains(themaExtensie))
+                        {
+                            plaatjes_filepaths.Add(bestand);
+                        }
+                    }
+
+                    // laad alle plaatjes in een array en returnt de array
+                    Image[] plaatjes = new Image[plaatjes_filepaths.Count];
+                    for (int i = 0; i < plaatjes_filepaths.Count; i++)
+                    {
+                        plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
+                    }
+                    return plaatjes;
+                }*/
 
         private void checkThema()
         {
@@ -379,35 +382,45 @@ namespace Memory_Game_Project
             plaatjes = ret_plaatjes;
         }
 
-/* (JAN)DEPRECATED
-        private Image get_test_achterkant()
+        /* (JAN)DEPRECATED
+                private Image get_test_achterkant()
+                {
+                    // genereert een geheel zwart plaatje voor de achterkant van de kaartjes
+                    int hoogte_en_breete = 150;// de groote van het plaatje
+                    Image achterkant = new Bitmap(hoogte_en_breete, hoogte_en_breete, PixelFormat.Format24bppRgb);
+
+                    using (Graphics gfx = Graphics.FromImage(achterkant))
+                    {
+                        gfx.FillRectangle(
+                            Brushes.Black, 0, 0, hoogte_en_breete, hoogte_en_breete);
+                    }
+                    return achterkant;
+                }*/
+
+        private void opslaan(string path)
         {
-            // genereert een geheel zwart plaatje voor de achterkant van de kaartjes
-            int hoogte_en_breete = 150;// de groote van het plaatje
-            Image achterkant = new Bitmap(hoogte_en_breete, hoogte_en_breete, PixelFormat.Format24bppRgb);
-
-            using (Graphics gfx = Graphics.FromImage(achterkant))
-            {
-                gfx.FillRectangle(
-                    Brushes.Black, 0, 0, hoogte_en_breete, hoogte_en_breete);
-            }
-            return achterkant;
-        }*/
-
-        private void opslaan_test(object sender, EventArgs e)
-        {
-
-            Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, "speler 1 test",
-                "speler 2 test", "");
+            string speler1_naam_score = string.Format("{0},{1}", naamspeler1.Text, Scorespeler1.Text);
+            string speler2_naam_score = string.Format("{0},{1}", naamspeler2.Text, Scorespeler2.Text);
+            Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, speler1_naam_score,
+                speler2_naam_score, speler1_aan_de_beurt, path);
+            
         }
 
-        private void load_test(object sender, EventArgs e)
+        private void load_spel(string path)
         {
-            Object[] temp = Spel_Opslag.load_spel("");
+
+            Object[] temp = Spel_Opslag.load_spel(path);
             Image[] plaatjes = (Image[])temp[0];
             bool[] omgedraait = (bool[])temp[1];
             Image achterkant = (Image)temp[2];
-            string[] spelers_naam_score = (string[]) temp[3];
+            speler1_aan_de_beurt = (bool)temp[4];
+            string[] spelers_naam_score = (string[])temp[3];
+            string[] speler1_naam_score = spelers_naam_score[0].Split(',');
+            string[] speler2_naam_score = spelers_naam_score[0].Split(',');
+            naamspeler1.Text = speler1_naam_score[0];
+            Scorespeler1.Text = speler1_naam_score[1];
+            naamspeler2.Text = speler2_naam_score[0];
+            Scorespeler2.Text = speler2_naam_score[1];
 
             for (int i = 0; i < plaatjes.Length; i++)
             {
@@ -423,17 +436,59 @@ namespace Memory_Game_Project
             }
 
             plaatje_achterkant = achterkant;
-            Console.WriteLine("spel geladen");
+            speleraandebeurttext();
+            MessageBox.Show("spel geladen");
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void aan_de_beurt_label_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void opslaan_klik(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Save bestanden (*.sav)|*.sav|All files (*.*)|*.*";
+            DialogResult result = dialog.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = dialog.FileName;
+                try
+                {
+                    opslaan(file);
+                }
+                catch (IOException exception)
+                {
+                    // (Jan)todo geen tijd meer om echte exeption handeling toe te voegen
+                    MessageBox.Show("Fout opgetreden tijdens het opslaan van het spel");
+                }
+            }
+            MessageBox.Show("spel opgeslagen");
+        }
+
+        private void load_spel_klik(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult result = dialog.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = dialog.FileName;
+                try
+                {
+                    load_spel(file);
+                }
+                catch (IOException exception)
+                {
+                    // (Jan)todo geen tijd meer om echte exeption handeling toe te voegen
+                    MessageBox.Show("Fout opgetreden tijden het laden van het spel.");
+                }
+
+            }
         }
     }
 }

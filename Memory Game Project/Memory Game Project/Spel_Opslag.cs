@@ -15,6 +15,7 @@ using prototype;
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Windows.Forms.VisualStyles;
+// ReSharper disable All
 
 namespace Memory_Game_Project
 {
@@ -28,7 +29,7 @@ namespace Memory_Game_Project
         static private bool encyptie = true;
 
         public static void save_spel(PictureBox[] kaartjes, Image achterkant, string speler_1_naam_score,
-                string speler_2_naam_score, string filepath)
+                string speler_2_naam_score, bool speler1_aan_de_beurt, string filepath)
 
         {
             /* (Jan) door deze methode to callen sla je het spel op.
@@ -77,7 +78,7 @@ namespace Memory_Game_Project
             }
 
             //achterkant is een argument en word door gepassed
-            save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
+            save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, speler1_aan_de_beurt, no_kaartjes);
             Console.WriteLine("opgeslagen");
         }
 
@@ -118,6 +119,7 @@ namespace Memory_Game_Project
             int aantal_plaatjes = (int)temp[0];
             string[] spelers_naam_score = (string[])temp[1];
             bool[] kaart_omgedraait = (bool[])temp[2];
+            bool speler1_aan_de_beurt = (bool)temp[3];
 
             //loads plaatjes
             Image[] temp_plaatjes = laad_plaatjes(aantal_plaatjes, zip_filepath);//het achterste plaatje is de achterkant
@@ -131,18 +133,19 @@ namespace Memory_Game_Project
             //maakt pictureboxes
             PictureBox[] picture_boxes = get_pictureboxes(plaatjes, achterkant, kaart_omgedraait);
 
-            Object[] retrn = new object[4];
+            Object[] retrn = new object[5];
             retrn[0] = plaatjes;
             retrn[1] = kaart_omgedraait;
             retrn[2] = achterkant;
             retrn[3] = spelers_naam_score;
+            retrn[4] = speler1_aan_de_beurt;
 
             return retrn;
         }
 
 
         private static void save_naar_zip(string save_bestand, int imgs_index, Object[,] kaart_data, Image achterkant,
-            string speler_1_naam_score, string speler_2_naam_score, int no_kaartjes)
+            string speler_1_naam_score, string speler_2_naam_score, bool speler1_aan_de_beurt, int no_kaartjes)
         {
             //saves het spel
             using (var memoryStream = new MemoryStream())
@@ -158,7 +161,7 @@ namespace Memory_Game_Project
                         using (var streamWriter = new StreamWriter(entryStream))
                         {
                             List<string> save_tekst = create_save_text(kaart_data, speler_1_naam_score,
-                                speler_2_naam_score, no_kaartjes);
+                                speler_2_naam_score, speler1_aan_de_beurt, no_kaartjes);
                             foreach (string line in save_tekst)
                             {
                                 streamWriter.Write(line + Environment.NewLine);
@@ -214,11 +217,15 @@ namespace Memory_Game_Project
         }
 
         private static List<string> create_save_text(Object[,] kaart_data, string speler_1_naam_score,
-            string speler_2_naam_score, int no_kaartjes)
+            string speler_2_naam_score, bool speler1_aan_de_beurt, int no_kaartjes)
         { /* een regel met een / aan het begin is een comment*/
             string eindtext = "#END";
 
             List<string> save_text = new List<string>();
+
+            save_text.Add("#SPELER1_AAN_BEURT");
+            save_text.Add(speler1_aan_de_beurt.ToString());
+            save_text.Add(eindtext);
 
             save_text.Add("#NO_KAARTJES");
             save_text.Add(no_kaartjes.ToString());
@@ -270,10 +277,12 @@ namespace Memory_Game_Project
             int aantal_plaatjes = new int();
             string[] spelers_naam_score = new string[] { "", "" };
             List<bool> kaart_omgedraait_list = new List<bool>();
+            bool speler1_aan_de_beurt = new bool();
 
             bool reading_no_kaartjes = false;
             bool reading_namen_en_scores = false;
             bool reading_kaart_omgedraait = false;
+            bool reading_speler1_aan_de_beurt = false;
 
             foreach (string line in save_tekst)
             {
@@ -284,6 +293,7 @@ namespace Memory_Game_Project
                         reading_no_kaartjes = false;
                         reading_namen_en_scores = false;
                         reading_kaart_omgedraait = false;
+                        reading_speler1_aan_de_beurt = false;
                     }
                     else if (line.Contains("NO_KAARTJES"))
                     {
@@ -293,11 +303,14 @@ namespace Memory_Game_Project
                     {
                         reading_namen_en_scores = true;
                     }
+                    else if(line.Contains("#SPELER1_AAN_BEURT"))
+                    {
+                        reading_speler1_aan_de_beurt = true;
+                    }
                     else if (line.Contains("OMGEDRAAIT"))
                     {
                         reading_kaart_omgedraait = true;
                     }
-
                 }
                 else if (reading_no_kaartjes)
                 {
@@ -314,6 +327,10 @@ namespace Memory_Game_Project
                         spelers_naam_score[1] = line;
                     }
                 }
+                else if (reading_speler1_aan_de_beurt)
+                {
+                    speler1_aan_de_beurt = bool.Parse(line);
+                }
                 else if (reading_kaart_omgedraait)
                 {
                     kaart_omgedraait_list.Add(bool.Parse(line));
@@ -326,10 +343,11 @@ namespace Memory_Game_Project
                     }
                 }
             }
-            Object[] temp = new object[3];
+            Object[] temp = new object[4];
             temp[0] = aantal_plaatjes;
             temp[1] = spelers_naam_score;
             temp[2] = kaart_omgedraait_list.ToArray();
+            temp[3] = speler1_aan_de_beurt;
             return temp;
         }
 
@@ -381,11 +399,12 @@ namespace Memory_Game_Project
         private static string resolve_path(string path)
         // als het path leeg is returnt dit het autosave path
         {
-            Directory.CreateDirectory(Utils.get_saves_dir());
             if (path == "")
             {
+                Directory.CreateDirectory(Utils.get_saves_dir());
                 return Utils.get_saves_dir() + autosave_bestand;
             }
+            Console.WriteLine(path);
             return path;
         }
         private static class Encryption

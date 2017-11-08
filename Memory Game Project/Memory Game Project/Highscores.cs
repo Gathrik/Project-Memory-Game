@@ -19,13 +19,9 @@ namespace Memory_Game_Project
         public Highscores()
         {
             InitializeComponent();
-<<<<<<< HEAD
-            var scores = ReadScoresFromFile("Highscores.txt");
-=======
             var scores = ReadScoresFromFile(Utils.get_highscores_file());
 
-            scores.ForEach(s => Console.WriteLine(s));
->>>>>>> 7a56d56b98ef30df00de02d4122feb108fa5ec8f
+
 
             foreach (var score in scores)
             {
