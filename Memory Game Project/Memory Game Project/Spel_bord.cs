@@ -52,6 +52,7 @@ namespace Memory_Game_Project
             //plaatje_achterkant = get_achterkant();
             hoofdmenu = hoofdmenu_arg;
             RandomizePictures();
+
             hideImages();
             geef_events();
             speleraandebeurttext();
@@ -74,6 +75,7 @@ namespace Memory_Game_Project
                 return Controls.OfType<PictureBox>().ToArray();
             }
         }
+
 
         private void hideImages() // (Jan) draai de kaartjes om
         {

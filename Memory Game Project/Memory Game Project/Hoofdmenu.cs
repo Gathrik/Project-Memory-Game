@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Memory_Game_Project;
 using System.IO;
 using System.Runtime.InteropServices;
+using Memory_Game_Project.Properties;
 
 namespace prototype
 {
@@ -25,7 +26,51 @@ namespace prototype
             huidige_thema_label.Text = themas[themaIndex];
             setup_combo_box();
 
-        }        
+        }
+
+        public void SpawnCards()
+        {
+            double square;
+
+            int pointx = 0;
+            int pointy = 0;
+            int total = 16;
+
+            string[] imgs = new string[] { "Image1", "Image2", "Image3", "Image4", "Image5", "Image6", "Image7", "Image8", "Image1", "Image2", "Image3", "Image4", "Image5", "Image6", "Image7", "Image8" };
+
+            int picsize = 75;
+
+            square = Math.Sqrt(total);
+
+            for (int j = 0; j < 16; j++)
+            {
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Location = new System.Drawing.Point(pointx, pointy);
+                pictureBox1.Name = "pictureBox";
+                pictureBox1.Size = new System.Drawing.Size(picsize, picsize);
+                pictureBox1.BackColor = Color.Black;
+
+                //pictureBox1.Image = global::MatchingGame.Properties.Resources.Image1;
+
+                //object O = Resources.ResourceManager.GetObject(imgs[CardIndex[j]]);
+                object O = Resources.ResourceManager.GetObject(imgs[j]);
+                pictureBox1.Image = (Image)O;
+
+
+
+                Controls.Add(pictureBox1);
+
+                if (pointx == ((square * picsize) - picsize))
+                {
+                    pointx = 0;
+                    pointy += picsize;
+                }
+                else
+                {
+                    pointx += picsize;
+                }
+            }
+        }
 
         public void setup_combo_box()
         {
@@ -55,7 +100,11 @@ namespace prototype
             string naamspeler1 = textBox1.Text;
             string naamspeler2 = textBox2.Text;
             //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
-            Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
+
+            //Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
+
+            SpawnCards();
+
             Hide();
             
         }
