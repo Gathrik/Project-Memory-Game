@@ -27,6 +27,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -202,6 +203,54 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wonder_woman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thor_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\superman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spiderman_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marvelicon_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\martian_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lantern_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ironman_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hulk_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dr_strange_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cyborg_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_america_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_panther_marvel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\batman_dc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aquaman_dc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

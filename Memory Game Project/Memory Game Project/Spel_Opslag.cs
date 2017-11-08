@@ -20,16 +20,15 @@ namespace Memory_Game_Project
 {
     public class Spel_Opslag
     {
-        static private string saves_map = "\\saves\\";
         static private string temp_bestand = "temp";
         static private string autosave_bestand = "autosave.sav";
         static private string text_bestand_name = "savetext.txt";
         static private string plaatjes_extenstie = ".png";
         static private ImageFormat plaatjes_format = ImageFormat.Png;
-        static private bool encyptie = false;
+        static private bool encyptie = true;
 
         public static void save_spel(PictureBox[] kaartjes, Image achterkant, string speler_1_naam_score,
-                string speler_2_naam_score, string filepath, string project_map)
+                string speler_2_naam_score, string filepath)
 
         {
             /* (Jan) door deze methode to callen sla je het spel op.
@@ -55,7 +54,7 @@ namespace Memory_Game_Project
              * in dat zelfde zip bestand
              */
 
-            string save_bestand = resolve_path(filepath, project_map);
+            string save_bestand = resolve_path(filepath);
             int imgs_index = 1;//(Jan) de array index waar de plaatjes worden opgeslagen
             int omgedraait_index = 0;
             int no_kaartjes = kaartjes.Length;
@@ -78,11 +77,11 @@ namespace Memory_Game_Project
             }
 
             //achterkant is een argument en word door gepassed
-            save_naar_zip(save_bestand, project_map, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
+            save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, no_kaartjes);
             Console.WriteLine("opgeslagen");
         }
 
-        public static object[] load_spel(string zip_filepath, string project_map)
+        public static object[] load_spel(string zip_filepath)
         {
             /* deze methode laad een opgeslagen spel
          * de methode gebruikt de volgende args:
@@ -101,7 +100,7 @@ namespace Memory_Game_Project
          * todo (Jan) een spel laden met een fout path veroorzaakt een crash
          */
 
-            zip_filepath = resolve_path(zip_filepath, project_map);
+            zip_filepath = resolve_path(zip_filepath);
 
             String[] save_tekst;
             try
@@ -111,7 +110,7 @@ namespace Memory_Game_Project
             catch
             {
                 Console.WriteLine("kan bestand niet lezen. is het encrypted?");
-                Encryption.decrypt_save(zip_filepath, project_map);
+                Encryption.decrypt_save(zip_filepath);
                 save_tekst = get_save_tekst(zip_filepath);
             }
             //parses tekst
@@ -142,7 +141,7 @@ namespace Memory_Game_Project
         }
 
 
-        private static void save_naar_zip(string save_bestand, string project_map, int imgs_index, Object[,] kaart_data, Image achterkant,
+        private static void save_naar_zip(string save_bestand, int imgs_index, Object[,] kaart_data, Image achterkant,
             string speler_1_naam_score, string speler_2_naam_score, int no_kaartjes)
         {
             //saves het spel
@@ -199,7 +198,7 @@ namespace Memory_Game_Project
             }
             if (encyptie)
             {
-                Encryption.encrypt_save(save_bestand, project_map);
+                Encryption.encrypt_save(save_bestand);
             }
         }
 
@@ -379,12 +378,13 @@ namespace Memory_Game_Project
             return save_text.ToArray();
         }
 
-        private static string resolve_path(string path, string project_map)
+        private static string resolve_path(string path)
         // als het path leeg is returnt dit het autosave path
         {
+            Directory.CreateDirectory(Utils.get_saves_dir());
             if (path == "")
             {
-                return project_map + saves_map + autosave_bestand;
+                return Utils.get_saves_dir() + autosave_bestand;
             }
             return path;
         }
@@ -393,9 +393,9 @@ namespace Memory_Game_Project
             //todo gebruik een temp bestand als outfile 
             private static string password = @"byd6hg9l";
 
-            public static void encrypt_save(string input_bestand, string projectmap)
+            public static void encrypt_save(string input_bestand)
             {
-                string temp_bestand_path = projectmap + saves_map + temp_bestand;
+                string temp_bestand_path = Utils.get_saves_dir() + temp_bestand;
 
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
@@ -424,11 +424,9 @@ namespace Memory_Game_Project
 
             }
 
-            public static void decrypt_save(string input_bestand, string projectmap)
+            public static void decrypt_save(string input_bestand)
             {
-                string temp_bestand_path = projectmap + saves_map + temp_bestand;
-
-
+                string temp_bestand_path = Utils.get_saves_dir() + temp_bestand;
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
 
@@ -451,7 +449,6 @@ namespace Memory_Game_Project
                 fsCrypt.Close();
 
                 kopieer_en_verwijder_temp(input_bestand, temp_bestand_path);
-
             }
 
             private static void kopieer_en_verwijder_temp(string output_bestand, string temp_bestand_path)

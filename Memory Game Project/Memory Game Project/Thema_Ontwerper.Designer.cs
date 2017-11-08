@@ -39,6 +39,10 @@
             this.plaatje_achterkant = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -143,7 +147,7 @@
             // plaatje_achterkant
             // 
             this.plaatje_achterkant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.plaatje_achterkant.Location = new System.Drawing.Point(118, 315);
+            this.plaatje_achterkant.Location = new System.Drawing.Point(71, 323);
             this.plaatje_achterkant.Name = "plaatje_achterkant";
             this.plaatje_achterkant.Size = new System.Drawing.Size(100, 100);
             this.plaatje_achterkant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -153,7 +157,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(259, 405);
+            this.textBox1.Location = new System.Drawing.Point(256, 323);
             this.textBox1.MaxLength = 15;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -161,19 +165,65 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(284, 335);
+            this.button1.Location = new System.Drawing.Point(272, 358);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(88, 36);
             this.button1.TabIndex = 25;
             this.button1.Text = "maak thema";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.maak_thema);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(59, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(301, 36);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Druk op een vierkant om een voorkant \r\nvan een plaatje te kiezen.\r\n";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(42, 290);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 30);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Druk op dit vierkant on \r\nje achterkant te kiezen";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(253, 290);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 30);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Kies een naam \r\nvoor je thema.";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(272, 400);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 36);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "terug naar hoofdmenu";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.terug_naar_hoofdmenu_kilik);
+            // 
             // Thema_Ontwerper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 512);
+            this.ClientSize = new System.Drawing.Size(446, 456);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.plaatje_achterkant);
@@ -185,12 +235,12 @@
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Thema_Ontwerper";
             this.Text = "Thema ontwerper";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.kruisje_klik);
-            this.Load += new System.EventHandler(this.Thema_Ontwerper_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -217,5 +267,9 @@
         private System.Windows.Forms.PictureBox plaatje_achterkant;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
     }
 }

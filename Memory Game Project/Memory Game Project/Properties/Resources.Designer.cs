@@ -73,9 +73,9 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap B25 {
+        public static System.Drawing.Bitmap aquaman_dc {
             get {
-                object obj = ResourceManager.GetObject("B25", resourceCulture);
+                object obj = ResourceManager.GetObject("aquaman_dc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,49 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap batman_dc {
+            get {
+                object obj = ResourceManager.GetObject("batman_dc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap black_panther_marvel {
+            get {
+                object obj = ResourceManager.GetObject("black_panther_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap captain_america_marvel {
+            get {
+                object obj = ResourceManager.GetObject("captain_america_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap cyborg {
             get {
                 object obj = ResourceManager.GetObject("cyborg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap cyborg_dc {
+            get {
+                object obj = ResourceManager.GetObject("cyborg_dc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +153,39 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap dr_strange_marvel {
+            get {
+                object obj = ResourceManager.GetObject("dr_strange_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap flash {
             get {
                 object obj = ResourceManager.GetObject("flash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap flash_dc {
+            get {
+                object obj = ResourceManager.GetObject("flash_dc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap hulk_marvel {
+            get {
+                object obj = ResourceManager.GetObject("hulk_marvel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +213,29 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ironman_marvel {
+            get {
+                object obj = ResourceManager.GetObject("ironman_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap lantern {
             get {
                 object obj = ResourceManager.GetObject("lantern", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap lantern_dc {
+            get {
+                object obj = ResourceManager.GetObject("lantern_dc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +253,29 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap martian_dc {
+            get {
+                object obj = ResourceManager.GetObject("martian_dc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap marvel_icon {
             get {
                 object obj = ResourceManager.GetObject("marvel_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap marvelicon_marvel {
+            get {
+                object obj = ResourceManager.GetObject("marvelicon_marvel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +313,16 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap spiderman_marvel {
+            get {
+                object obj = ResourceManager.GetObject("spiderman_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap superman {
             get {
                 object obj = ResourceManager.GetObject("superman", resourceCulture);
@@ -213,9 +333,39 @@ namespace Memory_Game_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap superman_dc {
+            get {
+                object obj = ResourceManager.GetObject("superman_dc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap thor_marvel {
+            get {
+                object obj = ResourceManager.GetObject("thor_marvel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap wonder_woman {
             get {
                 object obj = ResourceManager.GetObject("wonder_woman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap wonder_woman_dc {
+            get {
+                object obj = ResourceManager.GetObject("wonder_woman_dc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

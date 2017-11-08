@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Runtime.Versioning;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -15,6 +16,7 @@ using prototype;
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Windows.Forms.VisualStyles;
+using Memory_Game_Project;
 
 // ReSharper disable All
 
@@ -30,14 +32,21 @@ namespace Memory_Game_Project
         private Image[] plaatjes;
         private Image plaatje_achterkant;
         private Hoofdmenu hoofdmenu;
-
+        PictureBox vorig_kaartje = null;
+        bool omgedraait = false;
+        bool speler1_aan_de_beurt = true;
+       
+        
+        
         // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
         String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
 
 
-        public Spel_bord(Hoofdmenu hoofdmenu_arg)
+        public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg)
         {
             InitializeComponent();
+            naamspeler1.Text = naam_speler1_arg;
+            naamspeler2.Text = naam_speler2_arg;
             checkThema();
             plaatjes = get_plaatjes();
             //plaatje_achterkant = get_achterkant();
@@ -45,6 +54,7 @@ namespace Memory_Game_Project
             RandomizePictures();
             hideImages();
             geef_events();
+            speleraandebeurttext();
             Show();
         }
 
@@ -96,7 +106,7 @@ namespace Memory_Game_Project
 
         private void restart_click(object sender, EventArgs e)
         {// (Jan) deze methode herstart het spel door een nieuw spelbord  te instantieren
-            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu);
+            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, naamspeler1.Text, naamspeler2.Text);
             Hide();
             Dispose();
         }
@@ -114,17 +124,121 @@ namespace Memory_Game_Project
         }
 
         private void picturebox_klik(object sender, EventArgs e)
-        {// (Jan) draait de kaartjes om
-            if ((sender as PictureBox).Image == plaatje_achterkant)
+        {// (Jan) draait de kaartjes om  
+            PictureBox huidig_plaatje = (sender as PictureBox);
+            // bug je kan plaatjes meerdere keren omdraaien
+            // todo beide spelers krijgen steeds een punt
+            // todo als steeds op een plaatje klikt krijgt je punten
+
+            if (huidig_plaatje.Image != huidig_plaatje.Tag )
             {
-                (sender as PictureBox).Image = (Image)(sender as PictureBox).Tag;
+                draaiplaatjeom(huidig_plaatje);
+
+                if (vorig_kaartje == null)
+                {
+                    vorig_kaartje = huidig_plaatje;
+
+
+                }
+                else
+                {
+
+
+                    if (vorig_kaartje.Tag == huidig_plaatje.Tag)
+                    {
+
+                        if (speler1_aan_de_beurt)
+                        {
+                            geef_speler1_punt();
+                        }
+                        else
+                        {
+                            geef_speler2_punt();
+                        }
+                        vorig_kaartje = null;
+                    }
+                    else
+                    {
+                        if (speler1_aan_de_beurt)
+                        {
+                            speler1_aan_de_beurt = false;
+                        }
+                        else
+                        {
+                            speler1_aan_de_beurt = true;
+                        }
+
+                        draai_kaartjes_weer_om(huidig_plaatje, vorig_kaartje, 5);
+                        speleraandebeurttext();
+                    }
+
+
+
+                }
+            }
+ 
+        }
+
+        private void speleraandebeurttext()
+        {
+            if (speler1_aan_de_beurt)
+            {
+                aan_de_beurt_label.Text = naamspeler1.Text + " is aan de beurt";
+
             }
             else
             {
-                (sender as PictureBox).Image = plaatje_achterkant;
+                aan_de_beurt_label.Text = naamspeler2.Text + " is aan de beurt";
+
             }
         }
 
+       
+        private async void draai_kaartjes_weer_om(PictureBox kaartje1, PictureBox kaartje2, int seconden_wachtijd)
+        {
+            
+            await Task.Delay(seconden_wachtijd * 100);
+            draaiplaatjeom(kaartje1);
+            draaiplaatjeom(kaartje2);
+            vorig_kaartje = null;
+        }
+
+        private void geef_speler1_punt()
+        {
+            double score = double.Parse(Scorespeler1.Text);
+            score = ( score + 2);
+            score = (score - 1);
+
+          
+            
+            Scorespeler1.Text = score.ToString();
+            
+        }
+
+        private void geef_speler2_punt()
+        {
+
+
+            int score2 = int.Parse(Scorespeler2.Text);
+            score2++;
+            
+            Scorespeler2.Text = score2.ToString();
+
+
+        }
+        private void draaiplaatjeom(PictureBox box)
+        {
+
+            if ((box as PictureBox).Image == plaatje_achterkant)
+            {
+                (box as PictureBox).Image = (Image)(box as PictureBox).Tag;
+            }
+            else
+            {
+                (box as PictureBox).Image = plaatje_achterkant;
+            }
+
+}
         private Image[] get_plaatjes()
         {
             // get eerst de map voor het project en dan voor de plaatjes
@@ -193,14 +307,14 @@ namespace Memory_Game_Project
 
         private void opslaan_test(object sender, EventArgs e)
         {
-            
+
             Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, "speler 1 test",
-                "speler 2 test", "", project_map);
+                "speler 2 test", "");
         }
 
         private void load_test(object sender, EventArgs e)
         {
-            Object[] temp = Spel_Opslag.load_spel("", project_map);
+            Object[] temp = Spel_Opslag.load_spel("");
             Image[] plaatjes = (Image[])temp[0];
             bool[] omgedraait = (bool[])temp[1];
             Image achterkant = (Image)temp[2];
@@ -223,5 +337,14 @@ namespace Memory_Game_Project
             Console.WriteLine("spel geladen");
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void aan_de_beurt_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
