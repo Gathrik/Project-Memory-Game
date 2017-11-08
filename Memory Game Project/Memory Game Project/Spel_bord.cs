@@ -32,20 +32,22 @@ namespace Memory_Game_Project
         private Hoofdmenu hoofdmenu;
         PictureBox vorig_kaartje = null;
         bool speler1_aan_de_beurt = true;
+        string thema;
        
         
         
         // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
-        String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
+        //String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
 
 
-        public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg)
+        public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg, string thema_arg)
         {
+            thema = thema_arg;
             InitializeComponent();
             naamspeler1.Text = naam_speler1_arg;
             naamspeler2.Text = naam_speler2_arg;
             checkThema();
-            plaatjes = get_plaatjes();
+            //plaatjes = get_plaatjes();
             //plaatje_achterkant = get_achterkant();
             hoofdmenu = hoofdmenu_arg;
             RandomizePictures();
@@ -105,7 +107,7 @@ namespace Memory_Game_Project
 
         private void restart_click(object sender, EventArgs e)
         {// (Jan) deze methode herstart het spel door een nieuw spelbord  te instantieren
-            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, naamspeler1.Text, naamspeler2.Text);
+            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, naamspeler1.Text, naamspeler2.Text, thema);
             Hide();
             Dispose();
         }
@@ -244,7 +246,7 @@ namespace Memory_Game_Project
         {
             Console.WriteLine("einde spel");
         }
-
+/* (JAN)DEPRECATED
         private Image[] get_plaatjes()
         {
             // get eerst de map voor het project en dan voor de plaatjes
@@ -270,35 +272,85 @@ namespace Memory_Game_Project
                 plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
             }
             return plaatjes;
-        }
+        }*/
 
-        private void checkThema() // (Garik) Weet niet wat beter is, een if statement of gewoon switches
+        private void checkThema()
         {
-            /* if (Hoofdmenu.themaIndex == 0)
-             {
-                 themaExtensie = "_dc.png";
-             } else
-             {
-                 themaExtensie = "_marvel.png";
-             } */
-
-            int themaSwitch = Hoofdmenu.themaIndex;
-
-            switch (themaSwitch)
+            if (thema == "DC")
             {
-                case 0:
-                    plaatje_achterkant = Resources.dc_icon;
-                    themaExtensie = "_dc.png";
-                    break;
-                case 1:
-                    plaatje_achterkant = Resources.marvel_icon;
-                    themaExtensie = "_marvel.png";
-                    break;
+                plaatje_achterkant = Resources.dc_icon;
+                get_standaard_thema();
+            }
+            else if (thema == "Marvel")
+            {
+                plaatje_achterkant = Resources.marvel_icon;
+                get_standaard_thema();
+            }
+            else
+            {
+                load_custom_thema();
             }
         }
 
+
+        private void get_standaard_thema()
+        {
+            Image[] ret_plaatjes = new Image[8];
+            switch (thema)
+            {
+                case "DC":
+                    {
+                        ret_plaatjes = new Image[]{
+                        Resources.aquaman_dc,
+                        Resources.batman_dc,
+                        Resources.cyborg_dc,
+                        Resources.flash_dc,
+                        Resources.lantern_dc,
+                        Resources.martian_dc,
+                        Resources.superman_dc,
+                        Resources.wonder_woman_dc
+                    };
+                        break;
+                    }
+
+                case "Marvel":
+                    {
+                        ret_plaatjes = new Image[]
+                        {
+                        Resources.black_panther_marvel,
+                        Resources.captain_america_marvel,
+                        Resources.dr_strange_marvel,
+                        Resources.hulk_marvel,
+                        Resources.ironman_marvel,
+                        Resources.spiderman_marvel,
+                        Resources.thor_marvel,
+                        Resources.marvelicon_marvel
+                        };
+                        break;
+                    }
+            }
+            plaatjes = ret_plaatjes;
+        }
+
+        private void load_custom_thema()
+        {
+            string thema_map = Utils.get_themas_dir() + thema + @"\";
+            int plaatjes_op_bord = 8;
+            string plaatjes_exstentsie = ".png";
+            Image[] ret_plaatjes = new Image[plaatjes_op_bord];
+
+            for (int i = 0; i < plaatjes_op_bord; i++)
+            {
+                ret_plaatjes[i] = Image.FromFile(thema_map + (i + 1).ToString() + plaatjes_exstentsie);
+            }
+            plaatje_achterkant = Image.FromFile(thema_map + "ACHTERKANT" + plaatjes_exstentsie);
+
+            plaatjes = ret_plaatjes;
+        }
+
+/* (JAN)DEPRECATED
         private Image get_test_achterkant()
-        {//momenteel niet in gebruik
+        {
             // genereert een geheel zwart plaatje voor de achterkant van de kaartjes
             int hoogte_en_breete = 150;// de groote van het plaatje
             Image achterkant = new Bitmap(hoogte_en_breete, hoogte_en_breete, PixelFormat.Format24bppRgb);
@@ -309,7 +361,7 @@ namespace Memory_Game_Project
                     Brushes.Black, 0, 0, hoogte_en_breete, hoogte_en_breete);
             }
             return achterkant;
-        }
+        }*/
 
         private void opslaan_test(object sender, EventArgs e)
         {
