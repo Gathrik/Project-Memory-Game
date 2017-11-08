@@ -106,15 +106,12 @@ namespace prototype
         }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         private void highscores_klik(object sender, EventArgs e)
         {
             Highscores highscores = new Highscores();
             Hide();
             highscores.Show();
 =======
-=======
->>>>>>> 84e4beb88adc593ce2c7d741bbfe2fdeda542eb5
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -128,9 +125,6 @@ namespace prototype
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
->>>>>>> 84e4beb88adc593ce2c7d741bbfe2fdeda542eb5
-=======
 >>>>>>> 84e4beb88adc593ce2c7d741bbfe2fdeda542eb5
         }
     }
