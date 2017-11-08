@@ -99,16 +99,20 @@ namespace prototype
         {
             string naamspeler1 = textBox1.Text;
             string naamspeler2 = textBox2.Text;
-            //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
-
-<<<<<<< HEAD
-            Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text, themas_combobox.Text);
-=======
-            //Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
->>>>>>> 4b389de702e273eeb23865c262532cc2713e1ef0
-
-            SpawnCards();
-            Hide();    
+            if (naamspeler1 != string.Empty && naamspeler2 != string.Empty)
+            {
+                //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
+                Spel_bord spel_bord = new Spel_bord(this, naamspeler1, naamspeler2, themas_combobox.Text);
+                //Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
+                SpawnCards();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("ERROR: beide spelers moeten een naam opgeven voordat het spel kan beginnen.");
+            }
+            
+              
         }
 
         private void multiplayer_klik(object sender, EventArgs e)
@@ -151,10 +155,6 @@ namespace prototype
 
         }
 
-        private void themas_combobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void highscores_klik(object sender, EventArgs e)
         {
             Highscores highscores = new Highscores();

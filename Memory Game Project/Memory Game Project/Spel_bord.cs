@@ -25,7 +25,6 @@ namespace Memory_Game_Project
 {
     public partial class Spel_bord : Form
     {
-        string themaExtensie;
         Random random = new Random();
         private Image[] plaatjes;
         private Image plaatje_achterkant;
@@ -56,6 +55,8 @@ namespace Memory_Game_Project
             geef_events();
             speleraandebeurttext();
             Show();
+
+            einde_spel();
         }
 
         private void geef_events()
@@ -245,6 +246,41 @@ namespace Memory_Game_Project
         private void einde_spel()
         {
             Console.WriteLine("einde spel");
+            string highscore_bestand = Utils.get_highscores_file();
+            //naamspeler1 en 2
+
+
+            File.AppendText(highscore_bestand).Close();
+            System.IO.File.AppendAllText(highscore_bestand, get_winnaar_tekst());
+            //speler1_aan_de_beurt is true als speler 1 aan de beurt is else false
+           
+        }
+
+        private string get_winnaar_tekst()
+        {
+            int defScore1 = int.Parse(Scorespeler1.Text);
+            int defScore2 = int.Parse(Scorespeler2.Text);
+
+            int highscore;
+            string winnaar;
+
+            if (defScore1 > defScore2)
+            {
+                highscore = defScore1;
+                winnaar = naamspeler1.Text;
+
+            }
+            else if (defScore1 < defScore2)
+            {
+                highscore = defScore2;
+                winnaar = naamspeler2.Text;
+            }
+            else
+            {
+                highscore = defScore2;
+                winnaar = naamspeler2.Text;
+            }
+            return string.Format("{0},{1}{2}", winnaar, highscore, Environment.NewLine);
         }
 /* (JAN)DEPRECATED
         private Image[] get_plaatjes()

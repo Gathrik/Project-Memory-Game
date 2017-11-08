@@ -76,5 +76,12 @@ namespace Memory_Game_Project
             Directory.CreateDirectory(path);
             return path;
         }
+
+        public static string get_highscores_file()
+        {
+            string path = get_bestanden_dir();
+            path += @"highscores.txt";
+            return path;
+        }
     }
 }
