@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Runtime.Versioning;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -13,9 +14,9 @@ using System.Windows.Forms;
 using Memory_Game_Project.Properties;
 using prototype;
 using System.IO.Compression;
-using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Windows.Forms.VisualStyles;
+using Memory_Game_Project;
 
 // ReSharper disable All
 
@@ -25,29 +26,34 @@ namespace Memory_Game_Project
     public partial class Spel_bord : Form
     {
         bool allowClick = true;
-        string thema;
+        string themaExtensie;
         PictureBox firstGuess;
         Random random = new Random();
         private Image[] plaatjes;
         private Image plaatje_achterkant;
         private Hoofdmenu hoofdmenu;
 
+        bool speler1_aan_de_beurt = true;
+       
+        
+        
         // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
         String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
 
 
-        public Spel_bord(Hoofdmenu hoofdmenu_arg, string thema_arg)
+        public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg)
         {
             InitializeComponent();
-            thema = thema_arg;
-            Console.WriteLine(thema_arg);
+            naamspeler1.Text = naam_speler1_arg;
+            naamspeler2.Text = naam_speler2_arg;
             checkThema();
-            //plaatjes = get_plaatjes();
+            plaatjes = get_plaatjes();
             //plaatje_achterkant = get_achterkant();
             hoofdmenu = hoofdmenu_arg;
             RandomizePictures();
             hideImages();
             geef_events();
+            speleraandebeurttext();
             Show();
         }
 
@@ -99,7 +105,7 @@ namespace Memory_Game_Project
 
         private void restart_click(object sender, EventArgs e)
         {// (Jan) deze methode herstart het spel door een nieuw spelbord  te instantieren
-            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, thema);
+            Spel_bord nieuw_spel_bord = new Spel_bord(hoofdmenu, naamspeler1.Text, naamspeler2.Text);
             Hide();
             Dispose();
         }
@@ -117,88 +123,170 @@ namespace Memory_Game_Project
         }
 
         private void picturebox_klik(object sender, EventArgs e)
-        {// (Jan) draait de kaartjes om
-            if ((sender as PictureBox).Image == plaatje_achterkant)
-            {
-                (sender as PictureBox).Image = (Image)(sender as PictureBox).Tag;
-            }
-            else
-            {
-                (sender as PictureBox).Image = plaatje_achterkant;
-            }
-        }
+        {// (Jan) draait de kaartjes om  
+            PictureBox huidig_plaatje = (sender as PictureBox);
+            // bug je kan plaatjes meerdere keren omdraaien
+            // todo beide spelers krijgen steeds een punt
+            // todo als steeds op een plaatje klikt krijgt je punten
 
-        private void get_standaard_thema()
-        {
-            Image[] ret_plaatjes = new Image[8];
-            switch (thema)
+            if (huidig_plaatje.Image != huidig_plaatje.Tag )
             {
-                case "DC":
+                draaiplaatjeom(huidig_plaatje);
+
+                if (vorig_kaartje == null)
                 {
-                    ret_plaatjes = new Image[]{
-                        Resources.aquaman_dc,
-                        Resources.batman_dc,
-                        Resources.cyborg_dc,
-                        Resources.flash_dc,
-                        Resources.lantern_dc,
-                        Resources.martian_dc,
-                        Resources.superman_dc,
-                        Resources.wonder_woman_dc
-                    };
-                    break;
+                    vorig_kaartje = huidig_plaatje;
+
+
                 }
-
-                case "Marvel":
+                else
                 {
-                    ret_plaatjes = new Image[]
+
+
+                    if (vorig_kaartje.Tag == huidig_plaatje.Tag)
                     {
-                        Resources.black_panther_marvel,
-                        Resources.captain_america_marvel,
-                        Resources.dr_strange_marvel,
-                        Resources.hulk_marvel,
-                        Resources.ironman_marvel,
-                        Resources.spiderman_marvel,
-                        Resources.thor_marvel,
-                        Resources.marvelicon_marvel
-                    };
-                    break;
+
+                        if (speler1_aan_de_beurt)
+                        {
+                            geef_speler1_punt();
+                        }
+                        else
+                        {
+                            geef_speler2_punt();
+                        }
+                        vorig_kaartje = null;
+                    }
+                    else
+                    {
+                        if (speler1_aan_de_beurt)
+                        {
+                            speler1_aan_de_beurt = false;
+                        }
+                        else
+                        {
+                            speler1_aan_de_beurt = true;
+                        }
+
+                        draai_kaartjes_weer_om(huidig_plaatje, vorig_kaartje, 5);
+                        speleraandebeurttext();
+                    }
+
+
+
                 }
             }
-            plaatjes = ret_plaatjes;
+ 
         }
 
-        private void load_custom_thema()
+        private void speleraandebeurttext()
         {
-            string thema_map = Utils.get_themas_dir() + thema + @"\";
-            int plaatjes_op_bord = 8;
-            string plaatjes_exstentsie = ".png";
-            Image[] ret_plaatjes = new Image[plaatjes_op_bord];
-
-            for (int i = 0; i < plaatjes_op_bord; i++)
+            if (speler1_aan_de_beurt)
             {
-                ret_plaatjes[i] = Image.FromFile(thema_map + (i+1).ToString() + plaatjes_exstentsie);
-            }
-            plaatje_achterkant = Image.FromFile(thema_map + "ACHTERKANT" + plaatjes_exstentsie);
+                aan_de_beurt_label.Text = naamspeler1.Text + " is aan de beurt";
 
-            plaatjes = ret_plaatjes;
-        }
-
-        private void checkThema()
-        {
-
-            if (thema == "DC")
-            {
-                plaatje_achterkant = Resources.dc_icon;
-                get_standaard_thema();
-            }
-            else if (thema == "Marvel")
-            {
-                plaatje_achterkant = Resources.marvel_icon;
-                get_standaard_thema();
             }
             else
             {
-                load_custom_thema();
+                aan_de_beurt_label.Text = naamspeler2.Text + " is aan de beurt";
+
+            }
+        }
+
+       
+        private async void draai_kaartjes_weer_om(PictureBox kaartje1, PictureBox kaartje2, int seconden_wachtijd)
+        {
+            
+            await Task.Delay(seconden_wachtijd * 100);
+            draaiplaatjeom(kaartje1);
+            draaiplaatjeom(kaartje2);
+            vorig_kaartje = null;
+        }
+
+        private void geef_speler1_punt()
+        {
+            double score = double.Parse(Scorespeler1.Text);
+            score = ( score + 2);
+            score = (score - 1);
+
+          
+            
+            Scorespeler1.Text = score.ToString();
+            
+        }
+
+        private void geef_speler2_punt()
+        {
+
+
+            int score2 = int.Parse(Scorespeler2.Text);
+            score2++;
+            
+            Scorespeler2.Text = score2.ToString();
+
+
+        }
+        private void draaiplaatjeom(PictureBox box)
+        {
+
+            if ((box as PictureBox).Image == plaatje_achterkant)
+            {
+                (box as PictureBox).Image = (Image)(box as PictureBox).Tag;
+            }
+            else
+            {
+                (box as PictureBox).Image = plaatje_achterkant;
+            }
+
+}
+        private Image[] get_plaatjes()
+        {
+            // get eerst de map voor het project en dan voor de plaatjes
+            // (Jan)volgens mij werkt dit niet in gecompileerde code omdat je dan de Directory.GetCurrentDirectory() en niet de parent ervan
+            String project_map = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.FullName;
+            String map_met_plaatjes = "\\Resources\\";
+
+            // maakt een list met de filepath van de plaatjes
+            String[] bestanden_in_map = Directory.GetFiles(project_map + map_met_plaatjes);
+            List<string> plaatjes_filepaths = new List<string> { };
+            foreach (String bestand in bestanden_in_map)
+            {
+                if (bestand.Contains(themaExtensie))
+                {
+                    plaatjes_filepaths.Add(bestand);
+                }
+            }
+
+            // laad alle plaatjes in een array en returnt de array
+            Image[] plaatjes = new Image[plaatjes_filepaths.Count];
+            for (int i = 0; i < plaatjes_filepaths.Count; i++)
+            {
+                plaatjes[i] = Image.FromFile(plaatjes_filepaths[i]);
+            }
+            return plaatjes;
+        }
+
+        private void checkThema() // (Garik) Weet niet wat beter is, een if statement of gewoon switches
+        {
+            /* if (Hoofdmenu.themaIndex == 0)
+             {
+                 themaExtensie = "_dc.png";
+             } else
+             {
+                 themaExtensie = "_marvel.png";
+             } */
+
+            int themaSwitch = Hoofdmenu.themaIndex;
+
+            switch (themaSwitch)
+            {
+                case 0:
+                    plaatje_achterkant = Resources.dc_icon;
+                    themaExtensie = "_dc.png";
+                    break;
+                case 1:
+                    plaatje_achterkant = Resources.marvel_icon;
+                    themaExtensie = "_marvel.png";
+                    break;
             }
         }
 
@@ -218,7 +306,7 @@ namespace Memory_Game_Project
 
         private void opslaan_test(object sender, EventArgs e)
         {
-            
+
             Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, "speler 1 test",
                 "speler 2 test", "");
         }
@@ -248,5 +336,14 @@ namespace Memory_Game_Project
             Console.WriteLine("spel geladen");
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void aan_de_beurt_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

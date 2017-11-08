@@ -52,9 +52,12 @@ namespace prototype
 
         private void nieuw_spel_klik(object sender, EventArgs e)
         {
+            string naamspeler1 = textBox1.Text;
+            string naamspeler2 = textBox2.Text;
             //todo (Jan) moet eigenlijk wat eleganter met parents en children ofzo
-            Spel_bord spel_bord = new Spel_bord(this, themas_combobox.Text);
+            Spel_bord spel_bord = new Spel_bord(this, textBox1.Text, textBox2.Text);
             Hide();
+            
         }
 
         private void multiplayer_klik(object sender, EventArgs e)
@@ -98,6 +101,21 @@ namespace prototype
         }
 
         private void themas_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
