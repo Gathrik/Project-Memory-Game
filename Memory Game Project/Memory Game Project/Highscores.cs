@@ -20,11 +20,16 @@ namespace Memory_Game_Project
         {
             InitializeComponent();
             var scores = ReadScoresFromFile("Highscores.txt");
+<<<<<<< HEAD
             foreach (var score in scores)
             {
                 string score_string = string.Format("{0} {1} {2}", score.positie, score.naam, score.score);
                 Console.WriteLine(score_string);
             }
+=======
+            scores.ForEach(s => Console.WriteLine(s));
+            //scoreLabel.Text = File.ReadAllText("Highscores.txt");
+>>>>>>> 87dbb308eed84db1f6526497539ad7f46adb6613
         }
 
         public class Highscore
