@@ -28,7 +28,7 @@ namespace Memory_Game_Project
         static private ImageFormat plaatjes_format = ImageFormat.Png;
         static private bool encyptie = true;
 
-        public static void save_spel(PictureBox[] kaartjes, Image achterkant, string speler_1_naam_score,
+        public static void save_spel(PictureBox[] kaartjes, Image achterkant, int omgedraaide_box_index, string speler_1_naam_score,
                 string speler_2_naam_score, bool speler1_aan_de_beurt, string filepath)
 
         {
@@ -78,7 +78,7 @@ namespace Memory_Game_Project
             }
 
             //achterkant is een argument en word door gepassed
-            save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, speler_1_naam_score, speler_2_naam_score, speler1_aan_de_beurt, no_kaartjes);
+            save_naar_zip(save_bestand, imgs_index, kaart_data, achterkant, omgedraaide_box_index, speler_1_naam_score, speler_2_naam_score, speler1_aan_de_beurt, no_kaartjes);
             Console.WriteLine("opgeslagen");
         }
 
@@ -95,9 +95,11 @@ namespace Memory_Game_Project
          *
          * returns een list waarin
          * [0] is PictureBox[] kaartjes
-         * [1] is het plaatje voor de achterkant.
-         * [2] is een string array met speler 1 en 2 naam_score als 0 en 1
-         *
+         * [1] is een bool[] waarin staat of een plaatje is omgedraait
+         * [2] is het plaatje voor de achterkant.
+         * [3] is een string array met speler 1 en 2 naam_score als 0 en 1
+         * [4] is een bool die true is als speler 1 aan de beurt is
+         * [5] is een de index van de omgedraaide box als er 1 was anders <0
          * todo (Jan) een spel laden met een fout path veroorzaakt een crash
          */
 
@@ -120,6 +122,7 @@ namespace Memory_Game_Project
             string[] spelers_naam_score = (string[])temp[1];
             bool[] kaart_omgedraait = (bool[])temp[2];
             bool speler1_aan_de_beurt = (bool)temp[3];
+            int omgedraaide_box_index = (int)temp[4];
 
             //loads plaatjes
             Image[] temp_plaatjes = laad_plaatjes(aantal_plaatjes, zip_filepath);//het achterste plaatje is de achterkant
@@ -133,19 +136,20 @@ namespace Memory_Game_Project
             //maakt pictureboxes
             PictureBox[] picture_boxes = get_pictureboxes(plaatjes, achterkant, kaart_omgedraait);
 
-            Object[] retrn = new object[5];
+            Object[] retrn = new object[6];
             retrn[0] = plaatjes;
             retrn[1] = kaart_omgedraait;
             retrn[2] = achterkant;
             retrn[3] = spelers_naam_score;
             retrn[4] = speler1_aan_de_beurt;
+            retrn[5] = omgedraaide_box_index;
 
             return retrn;
         }
 
 
         private static void save_naar_zip(string save_bestand, int imgs_index, Object[,] kaart_data, Image achterkant,
-            string speler_1_naam_score, string speler_2_naam_score, bool speler1_aan_de_beurt, int no_kaartjes)
+            int omgedraaide_box_index, string speler_1_naam_score, string speler_2_naam_score, bool speler1_aan_de_beurt, int no_kaartjes)
         {
             //saves het spel
             using (var memoryStream = new MemoryStream())
@@ -160,7 +164,7 @@ namespace Memory_Game_Project
                     {
                         using (var streamWriter = new StreamWriter(entryStream))
                         {
-                            List<string> save_tekst = create_save_text(kaart_data, speler_1_naam_score,
+                            List<string> save_tekst = create_save_text(kaart_data,  omgedraaide_box_index, speler_1_naam_score,
                                 speler_2_naam_score, speler1_aan_de_beurt, no_kaartjes);
                             foreach (string line in save_tekst)
                             {
@@ -216,7 +220,7 @@ namespace Memory_Game_Project
             return bytes;
         }
 
-        private static List<string> create_save_text(Object[,] kaart_data, string speler_1_naam_score,
+        private static List<string> create_save_text(Object[,] kaart_data, int omgedraaide_box_index, string speler_1_naam_score,
             string speler_2_naam_score, bool speler1_aan_de_beurt, int no_kaartjes)
         { /* een regel met een / aan het begin is een comment*/
             string eindtext = "#END";
@@ -225,6 +229,10 @@ namespace Memory_Game_Project
 
             save_text.Add("#SPELER1_AAN_BEURT");
             save_text.Add(speler1_aan_de_beurt.ToString());
+            save_text.Add(eindtext);
+
+            save_text.Add("#OMGEDRAAIDE_BOX_INDEX");
+            save_text.Add(omgedraaide_box_index.ToString());
             save_text.Add(eindtext);
 
             save_text.Add("#NO_KAARTJES");
@@ -278,11 +286,13 @@ namespace Memory_Game_Project
             string[] spelers_naam_score = new string[] { "", "" };
             List<bool> kaart_omgedraait_list = new List<bool>();
             bool speler1_aan_de_beurt = new bool();
+            int omgedraaide_box_index = new int();
 
             bool reading_no_kaartjes = false;
             bool reading_namen_en_scores = false;
             bool reading_kaart_omgedraait = false;
             bool reading_speler1_aan_de_beurt = false;
+            bool reading_omgedraaide_box_index = false;
 
             foreach (string line in save_tekst)
             {
@@ -303,13 +313,17 @@ namespace Memory_Game_Project
                     {
                         reading_namen_en_scores = true;
                     }
-                    else if(line.Contains("#SPELER1_AAN_BEURT"))
+                    else if(line.Contains("SPELER1_AAN_BEURT"))
                     {
                         reading_speler1_aan_de_beurt = true;
                     }
                     else if (line.Contains("OMGEDRAAIT"))
                     {
                         reading_kaart_omgedraait = true;
+                    }
+                    else if (line.Contains("OMGEDRAAIDE_BOX_INDEX"))
+                    {
+                        reading_omgedraaide_box_index = true;
                     }
                 }
                 else if (reading_no_kaartjes)
@@ -335,6 +349,10 @@ namespace Memory_Game_Project
                 {
                     kaart_omgedraait_list.Add(bool.Parse(line));
                 }
+                else if (reading_omgedraaide_box_index)
+                {
+                    omgedraaide_box_index = int.Parse(line);
+                }
                 else
                 {
                     if (line[0] != '/')
@@ -343,11 +361,12 @@ namespace Memory_Game_Project
                     }
                 }
             }
-            Object[] temp = new object[4];
+            Object[] temp = new object[5];
             temp[0] = aantal_plaatjes;
             temp[1] = spelers_naam_score;
             temp[2] = kaart_omgedraait_list.ToArray();
             temp[3] = speler1_aan_de_beurt;
+            temp[4] = omgedraaide_box_index;
             return temp;
         }
 

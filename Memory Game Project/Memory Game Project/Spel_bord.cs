@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Memory_Game_Project.Properties;
 using prototype;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Windows.Forms.VisualStyles;
 using Memory_Game_Project;
@@ -29,9 +30,10 @@ namespace Memory_Game_Project
         private Image[] plaatjes;
         private Image plaatje_achterkant;
         private Hoofdmenu hoofdmenu;
-        PictureBox vorig_kaartje = null;
-        bool speler1_aan_de_beurt = true;
-        string thema;
+        private PictureBox vorig_kaartje = null;
+        private bool speler1_aan_de_beurt = true;
+        private string thema;
+        private bool omdraailock = false;
 
 
         public Spel_bord(Hoofdmenu hoofdmenu_arg, string naam_speler1_arg, string naam_speler2_arg, string thema_arg)
@@ -122,11 +124,9 @@ namespace Memory_Game_Project
         private void picturebox_klik(object sender, EventArgs e)
         {// (Jan) draait de kaartjes om  
             PictureBox huidig_plaatje = (sender as PictureBox);
-            // bug je kan plaatjes meerdere keren omdraaien
-            // todo beide spelers krijgen steeds een punt
-            // todo als steeds op een plaatje klikt krijgt je punten
 
-            if (huidig_plaatje.Image != huidig_plaatje.Tag)
+            if (huidig_plaatje.Image != huidig_plaatje.Tag/*als het niet al omgedraait is*/
+                && !omdraailock)
             {
                 draaiplaatjeom(huidig_plaatje);
                 if (vorig_kaartje == null)
@@ -174,7 +174,7 @@ namespace Memory_Game_Project
                         {
                             speler1_aan_de_beurt = true;
                         }
-                        draai_kaartjes_weer_om(huidig_plaatje, vorig_kaartje, 5);
+                        draai_kaartjes_weer_om(huidig_plaatje, vorig_kaartje, 1f);
                         speleraandebeurttext();
                     }
                 }
@@ -196,13 +196,14 @@ namespace Memory_Game_Project
         }
 
 
-        private async void draai_kaartjes_weer_om(PictureBox kaartje1, PictureBox kaartje2, int seconden_wachtijd)
+        private async void draai_kaartjes_weer_om(PictureBox kaartje1, PictureBox kaartje2, float seconden_wachtijd)
         {
-
-            await Task.Delay(seconden_wachtijd * 100);
+            omdraailock = true;
+            await Task.Delay((int)(seconden_wachtijd * 1000f));
             draaiplaatjeom(kaartje1);
             draaiplaatjeom(kaartje2);
             vorig_kaartje = null;
+            omdraailock = false;
         }
 
         private void geef_speler1_punt()
@@ -210,8 +211,6 @@ namespace Memory_Game_Project
             double score = double.Parse(Scorespeler1.Text);
             score = (score + 2);
             score = (score - 1);
-
-
 
             Scorespeler1.Text = score.ToString();
 
@@ -333,8 +332,8 @@ namespace Memory_Game_Project
             switch (thema)
             {
                 case "DC":
-                    {
-                        ret_plaatjes = new Image[]{
+                {
+                    ret_plaatjes = new Image[]{
                         Resources.aquaman_dc,
                         Resources.batman_dc,
                         Resources.cyborg_dc,
@@ -344,13 +343,13 @@ namespace Memory_Game_Project
                         Resources.superman_dc,
                         Resources.wonder_woman_dc
                     };
-                        break;
-                    }
+                    break;
+                }
 
                 case "Marvel":
+                {
+                    ret_plaatjes = new Image[]
                     {
-                        ret_plaatjes = new Image[]
-                        {
                         Resources.black_panther_marvel,
                         Resources.captain_america_marvel,
                         Resources.dr_strange_marvel,
@@ -359,9 +358,9 @@ namespace Memory_Game_Project
                         Resources.spiderman_marvel,
                         Resources.thor_marvel,
                         Resources.marvelicon_marvel
-                        };
-                        break;
-                    }
+                    };
+                    break;
+                }
             }
             plaatjes = ret_plaatjes;
         }
@@ -401,7 +400,24 @@ namespace Memory_Game_Project
         {
             string speler1_naam_score = string.Format("{0},{1}", naamspeler1.Text, Scorespeler1.Text);
             string speler2_naam_score = string.Format("{0},{1}", naamspeler2.Text, Scorespeler2.Text);
-            Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, speler1_naam_score,
+            int omgedraaide_box_index = -2;
+            if (vorig_kaartje == null)
+            {
+                omgedraaide_box_index = -1;
+            }
+            else
+            {
+                for (int i = 0; i < pictureBoxes.Length; i++)
+                {
+                    if (pictureBoxes[i].Tag == vorig_kaartje.Tag &&
+                        pictureBoxes[i].Tag == pictureBoxes[i].Image)//als het omgedraait is
+                    {
+                        omgedraaide_box_index = i;
+                    }
+                }
+            }
+            Console.WriteLine("index omgedraaide box = {0}", omgedraaide_box_index);
+            Spel_Opslag.save_spel(pictureBoxes, plaatje_achterkant, omgedraaide_box_index, speler1_naam_score,
                 speler2_naam_score, speler1_aan_de_beurt, path);
             
         }
@@ -413,8 +429,10 @@ namespace Memory_Game_Project
             Image[] plaatjes = (Image[])temp[0];
             bool[] omgedraait = (bool[])temp[1];
             Image achterkant = (Image)temp[2];
+            string[] spelers_naam_score = (string[]) temp[3];
             speler1_aan_de_beurt = (bool)temp[4];
-            string[] spelers_naam_score = (string[])temp[3];
+            int omgedraaide_box_index = (int)temp[5];
+
             string[] speler1_naam_score = spelers_naam_score[0].Split(',');
             string[] speler2_naam_score = spelers_naam_score[0].Split(',');
             naamspeler1.Text = speler1_naam_score[0];
@@ -433,6 +451,15 @@ namespace Memory_Game_Project
                 {
                     pictureBoxes[i].Image = achterkant;
                 }
+            }
+
+            if (omgedraaide_box_index > -1)
+            {
+                vorig_kaartje = pictureBoxes[omgedraaide_box_index];
+            }
+            else
+            {
+                vorig_kaartje = null;
             }
 
             plaatje_achterkant = achterkant;
